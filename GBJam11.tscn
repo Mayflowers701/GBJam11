@@ -29,3 +29,5 @@ layer_0/tile_data = PackedInt32Array(0, 131072, 0, 65536, 131072, 0, 131072, 131
 position = Vector2(48, 96)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]

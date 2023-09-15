@@ -27,5 +27,3 @@ layer_0/tile_data = PackedInt32Array(0, 131072, 0, 65536, 131072, 0, 131072, 131
 
 [node name="Player" parent="." instance=ExtResource("2_foi6x")]
 position = Vector2(48, 96)
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]

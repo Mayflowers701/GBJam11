@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1yfsw0n2e68a"]
+
+[ext_resource type="Texture2D" uid="uid://es54e777u7ob" path="res://PlaceholderTiles.png" id="1_2yv8p"]
+[ext_resource type="PackedScene" uid="uid://42grynypajcv" path="res://Player.tscn" id="2_foi6x"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_csulq"]
+texture = ExtResource("1_2yv8p")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_27ih8"]
+sources/0 = SubResource("TileSetAtlasSource_csulq")
+
+[node name="World" type="Node2D"]
+
+[node name="CollisionMap" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionMap"]
+polygon = PackedVector2Array(0, 0, 0, 144, 160, 144, 160, 0, 144, 0, 144, 112, 112, 112, 112, 128, 96, 128, 96, 112, 32, 112, 32, 96, 16, 96, 16, 0)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_27ih8")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 131072, 0, 65536, 131072, 0, 131072, 131072, 0, 196608, 131072, 0, 262144, 131072, 0, 327680, 131072, 0, 393216, 131072, 0, 458752, 131072, 0, 524288, 131072, 0, 524289, 131072, 0, 524290, 131072, 0, 524291, 131072, 0, 524292, 131072, 0, 524293, 131072, 0, 524294, 131072, 0, 524295, 131072, 0, 524296, 131072, 0, 524297, 131072, 0, 9, 131072, 0, 65545, 131072, 0, 131081, 131072, 0, 196617, 131072, 0, 262153, 131072, 0, 327689, 131072, 0, 393225, 131072, 0, 458761, 131072, 0, 458759, 131072, 0, 458760, 131072, 0, 458753, 131072, 0, 458754, 131072, 0, 458755, 131072, 0, 458756, 131072, 0, 458757, 131072, 0, 393217, 131072, 0)
+
+[node name="Player" parent="." instance=ExtResource("2_foi6x")]
+position = Vector2(48, 96)

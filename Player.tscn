@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://42grynypajcv"]
+[gd_scene load_steps=6 format=3 uid="uid://42grynypajcv"]
 
 [ext_resource type="Texture2D" uid="uid://es54e777u7ob" path="res://PlaceholderTiles.png" id="1_r8ger"]
+[ext_resource type="Script" path="res://Player.gd" id="1_xtmtc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aanqg"]
 atlas = ExtResource("1_r8ger")
@@ -18,14 +19,15 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kmfub"]
-size = Vector2(16, 16)
+size = Vector2(14, 15)
 
 [node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_xtmtc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_xxm8c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(8, 8)
+position = Vector2(8, 8.5)
 shape = SubResource("RectangleShape2D_kmfub")

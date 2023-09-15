@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1yfsw0n2e68a"]
+[gd_scene load_steps=7 format=3 uid="uid://d1yfsw0n2e68a"]
 
 [ext_resource type="Texture2D" uid="uid://es54e777u7ob" path="res://PlaceholderTiles.png" id="1_2yv8p"]
 [ext_resource type="PackedScene" uid="uid://42grynypajcv" path="res://Player.tscn" id="2_foi6x"]
+[ext_resource type="FontFile" uid="uid://g86buw6aik50" path="res://PressStart2P.ttf" id="3_4a4in"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_csulq"]
 texture = ExtResource("1_2yv8p")
@@ -12,6 +13,12 @@ texture = ExtResource("1_2yv8p")
 
 [sub_resource type="TileSet" id="TileSet_27ih8"]
 sources/0 = SubResource("TileSetAtlasSource_csulq")
+
+[sub_resource type="LabelSettings" id="LabelSettings_n55le"]
+line_spacing = 2.0
+font = ExtResource("3_4a4in")
+font_size = 8
+shadow_size = 0
 
 [node name="World" type="Node2D"]
 
@@ -27,3 +34,13 @@ layer_0/tile_data = PackedInt32Array(0, 131072, 0, 65536, 131072, 0, 131072, 131
 
 [node name="Player" parent="." instance=ExtResource("2_foi6x")]
 position = Vector2(48, 96)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 152.0
+offset_bottom = 28.0
+text = "Arrow Keys to Move
+Space to Jump"
+label_settings = SubResource("LabelSettings_n55le")
+horizontal_alignment = 1

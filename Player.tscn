@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://42grynypajcv"]
+[gd_scene load_steps=7 format=3 uid="uid://42grynypajcv"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_xtmtc"]
 [ext_resource type="Texture2D" uid="uid://bg6g5aptl3uyh" path="res://8PxTilePlaceholders.png" id="2_1ivmr"]
+[ext_resource type="Script" path="res://GameCamera.gd" id="3_ouqkk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_121pa"]
 atlas = ExtResource("2_1ivmr")
@@ -31,3 +32,10 @@ sprite_frames = SubResource("SpriteFrames_ldnwd")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(4, 4)
 shape = SubResource("RectangleShape2D_kmfub")
+
+[node name="GameCamera" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = 0
+limit_bottom = 144
+position_smoothing_speed = 20.0
+script = ExtResource("3_ouqkk")

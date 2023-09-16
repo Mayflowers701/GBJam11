@@ -10,6 +10,7 @@ var lightWidth = 150
 var lightDirection = 0.0
 
 var testPoly
+var collisionMap
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,6 +21,7 @@ func _ready():
 	parentPos = get_canvas_transform()
 	
 	testPoly = get_node("/root/World/CollisionMap/LightingTestPolygon")
+	collisionMap = get_node("/root/World/CollisionMap")
 
 func _draw():
 	#draw_line(Vector2(0, 0), Vector2(playerPos.x, playerPos.y), Color.GREEN, 1.0)
@@ -35,24 +37,30 @@ func _draw():
 	#draw_polygon(shadowPoints, shadowColor)
 	
 
-	# Raycast Testing
-	if testPoly:
-		var space_state = get_world_2d().direct_space_state
-		var poly = testPoly.polygon
-		for point in poly:
-			"""
-			var query = PhysicsRayQueryParameters2D.create(Vector2(0, 0), Vector2(point.x, point.y))
-			var result = space_state.intersect_ray(query)
-			if result:
-				draw_line(Vector2(0, 0), Vector2(result.position.x - get_parent().position.x, result.position.y - get_parent().position.y), Color.GREEN, 1.0)
-			"""
+	# Light Raycasting!
+	# Iterate through all CollisionPolygon2D within the CollisionMap
+	if collisionMap:
+		for child_index in range(collisionMap.get_child_count()):
 			
-			# Get x proportion from player compared to edge of screen
-			var ratio = 160 / (point.x - get_parent().position.x)
-			var height = ratio*(point.y - get_parent().position.y)
-			
-			draw_line(Vector2(160*sign(ratio), height*sign(ratio)), Vector2(point.x - get_parent().position.x, point.y - get_parent().position.y), Color.GREEN, 1.0)
-				
+			# Check if this child is a CollisionPolygon2D node
+			var child = collisionMap.get_child(child_index)
+			if child is CollisionPolygon2D:
+				var space_state = get_world_2d().direct_space_state
+				var poly = child.polygon
+				for point in poly:
+					"""
+					var query = PhysicsRayQueryParameters2D.create(Vector2(0, 0), Vector2(point.x, point.y))
+					var result = space_state.intersect_ray(query)
+					if result:
+						draw_line(Vector2(0, 0), Vector2(result.position.x - get_parent().position.x, result.position.y - get_parent().position.y), Color.GREEN, 1.0)
+					"""
+					
+					# Get x proportion from player compared to edge of screen
+					var ratio = 160 / (point.x - get_parent().position.x)
+					var height = ratio*(point.y - get_parent().position.y)
+					
+					draw_line(Vector2(160*sign(ratio), height*sign(ratio)), Vector2(point.x - get_parent().position.x, point.y - get_parent().position.y), Color.GREEN, 1.0)
+						
 
 
 

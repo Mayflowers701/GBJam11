@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://d1yfsw0n2e68a"]
+[gd_scene load_steps=6 format=3 uid="uid://d1yfsw0n2e68a"]
 
 [ext_resource type="Texture2D" uid="uid://bg6g5aptl3uyh" path="res://8PxTilePlaceholders.png" id="1_yor60"]
 [ext_resource type="PackedScene" uid="uid://42grynypajcv" path="res://Player.tscn" id="2_foi6x"]
-[ext_resource type="Script" path="res://DynamicLight.gd" id="3_7oeuu"]
 [ext_resource type="AudioStream" uid="uid://mww11prk2iaa" path="res://Babbling-brook-sounds.mp3" id="4_lijr6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i64hi"]
@@ -69,11 +68,3 @@ position = Vector2(40, 96)
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="DynamicLight" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 8.0
-offset_right = 168.0
-offset_bottom = 144.0
-script = ExtResource("3_7oeuu")

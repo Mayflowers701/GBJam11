@@ -7,6 +7,7 @@ var parentPos
 var shadowPoints
 var shadowColor = [Color(0,0,0,1)]
 var lightWidth = 150
+var lightDirection = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,7 +27,7 @@ func _draw():
 	#draw_line(Vector2(5*playerFacing, 0), Vector2(160*playerFacing, -144), Color.GREEN, 1.0)
 	#draw_line(Vector2(5*playerFacing, 0), Vector2(160*playerFacing, 144), Color.GREEN, 1.0)
 	
-	shadowPoints = [Vector2(5*playerFacing,-5),Vector2(160*playerFacing, -lightWidth/2), Vector2(160*playerFacing,-144),Vector2(-160*playerFacing,-144), Vector2(-160*playerFacing, 144), Vector2(160*playerFacing,144), Vector2(160*playerFacing, lightWidth/2), Vector2(5*playerFacing,5), Vector2(0, 10),Vector2(-10*playerFacing, 0),Vector2(0, -10)]
+	shadowPoints = [Vector2(0*playerFacing,-7),Vector2(160*playerFacing, -lightWidth/2 + lightDirection), Vector2(160*playerFacing,-144- abs(lightDirection)),Vector2(-160*playerFacing,-144), Vector2(-160*playerFacing, 144), Vector2(160*playerFacing,144+ abs(lightDirection)), Vector2(160*playerFacing, lightWidth/2 + lightDirection), Vector2(0*playerFacing,7),Vector2(-6*playerFacing, 3),Vector2(-7*playerFacing, 0),Vector2(-6*playerFacing, -3)]
 	draw_polygon(shadowPoints, shadowColor)
 
 

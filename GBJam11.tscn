@@ -23,6 +23,8 @@ sources/0 = SubResource("TileSetAtlasSource_i64hi")
 offset_right = 416.0
 offset_bottom = 144.0
 
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
 [node name="CollisionMap" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionMap"]
@@ -34,7 +36,7 @@ polygon = PackedVector2Array(80, 88, 264, 88, 264, 56, 80, 56)
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="CollisionMap"]
 polygon = PackedVector2Array(32, 56, 32, 64, 64, 64, 64, 56)
 
-[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="CollisionMap"]
+[node name="LightingTestPolygon" type="CollisionPolygon2D" parent="CollisionMap"]
 polygon = PackedVector2Array(32, 80, 32, 88, 64, 88, 64, 80)
 
 [node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="CollisionMap"]
@@ -64,7 +66,5 @@ panning_strength = 2.0
 
 [node name="Player" parent="." instance=ExtResource("2_foi6x")]
 position = Vector2(40, 96)
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

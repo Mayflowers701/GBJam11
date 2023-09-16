@@ -37,5 +37,5 @@ shape = SubResource("RectangleShape2D_kmfub")
 limit_left = 0
 limit_top = 0
 limit_bottom = 144
-position_smoothing_speed = 20.0
+position_smoothing_speed = 2.0
 script = ExtResource("3_ouqkk")

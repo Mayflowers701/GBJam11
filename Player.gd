@@ -9,6 +9,7 @@ var gravity = 400#ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var direction = 1;
 var facing = 1;
+var lightSpeed = 0.1
 
 func _ready():
 	pass
@@ -43,6 +44,13 @@ func _physics_process(delta):
 		facing = 1
 		$AnimatedSprite2D.flip_h = false
 		
-	#Update Sprite facing
+	#Update Light Direction (see DynamicLight for effects)
+	if(Input.is_action_pressed("game_up")):
+		$DynamicLight.lightDirection = lerp($DynamicLight.lightDirection, -100.0, lightSpeed)
+	elif(Input.is_action_pressed("game_down")):
+		$DynamicLight.lightDirection = lerp($DynamicLight.lightDirection, 100.0, lightSpeed)
+	else:
+		$DynamicLight.lightDirection = lerp($DynamicLight.lightDirection, 0.0, lightSpeed)
+	
 	
 	

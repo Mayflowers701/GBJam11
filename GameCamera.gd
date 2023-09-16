@@ -1,5 +1,8 @@
 extends Camera2D
 
+# Track the position of the camera corners for the sake fo drawing shadows
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

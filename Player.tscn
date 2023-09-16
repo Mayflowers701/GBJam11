@@ -26,12 +26,14 @@ size = Vector2(6, 7)
 script = ExtResource("1_xtmtc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_ldnwd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(4, 4.5)
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_kmfub")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true
 
 [node name="GameCamera" type="Camera2D" parent="."]
 limit_left = 0

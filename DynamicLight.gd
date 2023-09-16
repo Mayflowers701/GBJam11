@@ -16,6 +16,8 @@ func _ready():
 		playerPos = player.position
 		playerFacing = player.facing
 	parentPos = get_canvas_transform()
+	
+	var testPoly = get_node("root/World/CollisionMap/LightingTestPolygon")
 
 func _draw():
 	#draw_line(Vector2(0, 0), Vector2(playerPos.x, playerPos.y), Color.GREEN, 1.0)
@@ -29,6 +31,9 @@ func _draw():
 	
 	shadowPoints = [Vector2(0*playerFacing,-7),Vector2(160*playerFacing, -lightWidth/2 + lightDirection), Vector2(160*playerFacing,-144- abs(lightDirection)),Vector2(-160*playerFacing,-144), Vector2(-160*playerFacing, 144), Vector2(160*playerFacing,144+ abs(lightDirection)), Vector2(160*playerFacing, lightWidth/2 + lightDirection), Vector2(0*playerFacing,7),Vector2(-6*playerFacing, 3),Vector2(-7*playerFacing, 0),Vector2(-6*playerFacing, -3)]
 	draw_polygon(shadowPoints, shadowColor)
+	
+	#if testPoly:
+		
 
 
 

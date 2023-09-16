@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1yfsw0n2e68a"]
+[gd_scene load_steps=6 format=3 uid="uid://d1yfsw0n2e68a"]
 
 [ext_resource type="Texture2D" uid="uid://bg6g5aptl3uyh" path="res://8PxTilePlaceholders.png" id="1_yor60"]
 [ext_resource type="PackedScene" uid="uid://42grynypajcv" path="res://Player.tscn" id="2_foi6x"]
+[ext_resource type="Script" path="res://DynamicLight.gd" id="3_7oeuu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i64hi"]
 resource_name = "Greyscale"
@@ -54,3 +55,10 @@ layer_0/tile_data = PackedInt32Array(0, 196608, 0, 65536, 196608, 0, 131072, 196
 position = Vector2(40, 96)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="DynamicLight" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_7oeuu")

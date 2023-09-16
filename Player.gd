@@ -35,8 +35,14 @@ func _physics_process(delta):
 	# Handling other things
 	
 	# Have Camera lead a little ahead of player's facing
+	# Also update sprite direction
 	if(direction < 0):
 		facing = -1
+		$AnimatedSprite2D.flip_h = true
 	elif(direction > 0):
 		facing = 1
+		$AnimatedSprite2D.flip_h = false
+		
+	#Update Sprite facing
+	
 	

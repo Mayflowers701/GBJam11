@@ -9,10 +9,10 @@ var gravity = 400#ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var direction = 1;
 var facing = 1;
-var lightSpeed = 0.1
+var lightSpeed = 0.2
 
 func _ready():
-	$ShadowOverlay.hide()
+	#$ShadowOverlay.hide()
 	pass
 
 func _physics_process(delta):
@@ -49,11 +49,11 @@ func _physics_process(delta):
 		
 	#Update Light Direction (see DynamicLight for effects)
 	if(Input.is_action_pressed("game_up")):
-		$DynamicLight.lightDirection = lerp($DynamicLight.lightDirection, -100.0, lightSpeed)
+		$ShadowOverlay.rotation = lerp($ShadowOverlay.rotation, 0.785398*-sign(facing), lightSpeed)
 	elif(Input.is_action_pressed("game_down")):
-		$DynamicLight.lightDirection = lerp($DynamicLight.lightDirection, 100.0, lightSpeed)
+		$ShadowOverlay.rotation = lerp($ShadowOverlay.rotation, 0.785398*sign(facing), lightSpeed)
 	else:
-		$DynamicLight.lightDirection = lerp($DynamicLight.lightDirection, 0.0, lightSpeed)
+		$ShadowOverlay.rotation = lerp($ShadowOverlay.rotation, 0.0, lightSpeed)
 	
 	
 	

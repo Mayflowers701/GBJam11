@@ -6,15 +6,15 @@
 [ext_resource type="Script" path="res://DynamicLight.gd" id="4_jombq"]
 [ext_resource type="Texture2D" uid="uid://57rao52pmhbc" path="res://ShadowMap.png" id="4_ytouy"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pmfbs"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6bgsy"]
 atlas = ExtResource("2_4ybbo")
-region = Rect2(0, 0, 8, 8)
+region = Rect2(0, 0, 10, 10)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ldnwd"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pmfbs")
+"texture": SubResource("AtlasTexture_6bgsy")
 }],
 "loop": true,
 "name": &"default",
@@ -46,7 +46,7 @@ script = ExtResource("1_xtmtc")
 sprite_frames = SubResource("SpriteFrames_ldnwd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
+position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_kmfub")
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]

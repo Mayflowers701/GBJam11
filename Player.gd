@@ -9,9 +9,10 @@ var gravity = 400#ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var direction = 1;
 var facing = 1;
-var lightSpeed = 0.1
+var lightSpeed = 0.2
 
 func _ready():
+	#$ShadowOverlay.hide()
 	pass
 
 func _physics_process(delta):
@@ -40,17 +41,25 @@ func _physics_process(delta):
 	if(direction < 0):
 		facing = -1
 		$AnimatedSprite2D.flip_h = true
+		$ShadowOverlay.flip_h = true
 	elif(direction > 0):
 		facing = 1
 		$AnimatedSprite2D.flip_h = false
+		$ShadowOverlay.flip_h = false
 		
 	#Update Light Direction (see DynamicLight for effects)
 	if(Input.is_action_pressed("game_up")):
-		$DynamicLight.lightDirection = lerp($DynamicLight.lightDirection, -100.0, lightSpeed)
+		$ShadowOverlay.rotation = lerp($ShadowOverlay.rotation, 0.785398*-sign(facing), lightSpeed)
+		$AnimatedSprite2D.animation = "look"
+		$AnimatedSprite2D.frame = 1
 	elif(Input.is_action_pressed("game_down")):
-		$DynamicLight.lightDirection = lerp($DynamicLight.lightDirection, 100.0, lightSpeed)
+		$ShadowOverlay.rotation = lerp($ShadowOverlay.rotation, 0.785398*sign(facing), lightSpeed)
+		$AnimatedSprite2D.animation = "look"
+		$AnimatedSprite2D.frame = 2
 	else:
-		$DynamicLight.lightDirection = lerp($DynamicLight.lightDirection, 0.0, lightSpeed)
+		$ShadowOverlay.rotation = lerp($ShadowOverlay.rotation, 0.0, lightSpeed)
+		$AnimatedSprite2D.frame = 0
 	
-	
+	if direction:
+		$AnimatedSprite2D.animation = "walk"
 	

@@ -50,10 +50,16 @@ func _physics_process(delta):
 	#Update Light Direction (see DynamicLight for effects)
 	if(Input.is_action_pressed("game_up")):
 		$ShadowOverlay.rotation = lerp($ShadowOverlay.rotation, 0.785398*-sign(facing), lightSpeed)
+		$AnimatedSprite2D.animation = "look"
+		$AnimatedSprite2D.frame = 1
 	elif(Input.is_action_pressed("game_down")):
 		$ShadowOverlay.rotation = lerp($ShadowOverlay.rotation, 0.785398*sign(facing), lightSpeed)
+		$AnimatedSprite2D.animation = "look"
+		$AnimatedSprite2D.frame = 2
 	else:
 		$ShadowOverlay.rotation = lerp($ShadowOverlay.rotation, 0.0, lightSpeed)
+		$AnimatedSprite2D.frame = 0
 	
-	
+	if direction:
+		$AnimatedSprite2D.animation = "walk"
 	

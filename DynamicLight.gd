@@ -89,8 +89,8 @@ func _draw():
 					# The next point
 					var C = Vector2(projectDistance*nextShadowDir, nextHeight*nextShadowDir)
 				
-					draw_polygon([A,B,C],shadowColor)
-					draw_polygon([A,C,D],shadowColor)
+					#draw_polygon([A,B,C],shadowColor)
+					#draw_polygon([A,C,D],shadowColor)
 					
 					#draw_line(A,B,Color.GREEN, 1.0)
 					#draw_line(B,C,Color.RED, 1.0)

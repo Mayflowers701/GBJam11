@@ -12,6 +12,7 @@ var facing = 1;
 var lightSpeed = 0.1
 
 func _ready():
+	$ShadowOverlay.hide()
 	pass
 
 func _physics_process(delta):
@@ -40,9 +41,11 @@ func _physics_process(delta):
 	if(direction < 0):
 		facing = -1
 		$AnimatedSprite2D.flip_h = true
+		$ShadowOverlay.flip_h = true
 	elif(direction > 0):
 		facing = 1
 		$AnimatedSprite2D.flip_h = false
+		$ShadowOverlay.flip_h = false
 		
 	#Update Light Direction (see DynamicLight for effects)
 	if(Input.is_action_pressed("game_up")):

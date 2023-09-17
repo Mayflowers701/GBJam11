@@ -6,7 +6,7 @@ var screen_points
 var parentPos
 var shadowPoints
 var shadowColor = [Color(0,0,0,1)]
-var lightWidth = 150
+var lightWidth = 200
 var lightDirection = 0.0
 
 var testPoly
@@ -33,7 +33,7 @@ func _draw():
 	#draw_line(Vector2(5*playerFacing, 0), Vector2(160*playerFacing, -144), Color.GREEN, 1.0)
 	#draw_line(Vector2(5*playerFacing, 0), Vector2(160*playerFacing, 144), Color.GREEN, 1.0)
 	
-	shadowPoints = [Vector2(0*playerFacing,-7),Vector2(160*playerFacing, -lightWidth/2 + lightDirection), Vector2(160*playerFacing,-144- abs(lightDirection)),Vector2(-160*playerFacing,-144), Vector2(-160*playerFacing, 144), Vector2(160*playerFacing,144+ abs(lightDirection)), Vector2(160*playerFacing, lightWidth/2 + lightDirection), Vector2(0*playerFacing,7),Vector2(-6*playerFacing, 3),Vector2(-7*playerFacing, 0),Vector2(-6*playerFacing, -3)]
+	#shadowPoints = [Vector2(0*playerFacing,-7),Vector2(160*playerFacing, -lightWidth/2 + lightDirection), Vector2(160*playerFacing,-144- abs(lightDirection)),Vector2(-160*playerFacing,-144), Vector2(-160*playerFacing, 144), Vector2(160*playerFacing,144+ abs(lightDirection)), Vector2(160*playerFacing, lightWidth/2 + lightDirection), Vector2(0*playerFacing,7),Vector2(-6*playerFacing, 3),Vector2(-7*playerFacing, 0),Vector2(-6*playerFacing, -3)]
 	#draw_polygon(shadowPoints, shadowColor)
 	
 
@@ -47,20 +47,58 @@ func _draw():
 			if child is CollisionPolygon2D:
 				var space_state = get_world_2d().direct_space_state
 				var poly = child.polygon
-				for point in poly:
+				
+				for pt_index in child.polygon.size():
 					"""
 					var query = PhysicsRayQueryParameters2D.create(Vector2(0, 0), Vector2(point.x, point.y))
 					var result = space_state.intersect_ray(query)
 					if result:
 						draw_line(Vector2(0, 0), Vector2(result.position.x - get_parent().position.x, result.position.y - get_parent().position.y), Color.GREEN, 1.0)
 					"""
+					var point = child.polygon[pt_index]
+					var nextPoint
+					
+					# If we're at the end of the polygon, the first vertex is next
+					if pt_index < child.polygon.size()-1:
+						nextPoint = child.polygon[pt_index+1]
+					else:
+						nextPoint = child.polygon[0]
+						
+					var projectDistance = 1600
 					
 					# Get x proportion from player compared to edge of screen
-					var ratio = 160 / (point.x - get_parent().position.x)
+					var ratio = projectDistance / (point.x - get_parent().position.x)
 					var height = ratio*(point.y - get_parent().position.y)
+					var shadowDir = sign(ratio)
+					if shadowDir == 0:
+						shadowDir = 1;
 					
-					draw_line(Vector2(160*sign(ratio), height*sign(ratio)), Vector2(point.x - get_parent().position.x, point.y - get_parent().position.y), Color.GREEN, 1.0)
-						
+					var nextRatio = projectDistance / (nextPoint.x - get_parent().position.x)
+					var nextHeight = nextRatio*(nextPoint.y - get_parent().position.y)
+					var nextShadowDir = sign(nextRatio)
+					if nextShadowDir == 0:
+						nextShadowDir = 0
+					
+					# Create our four points for our polygon
+					# This point
+					var A = Vector2(point.x - get_parent().position.x, point.y - get_parent().position.y)
+					# It's vanishing extension
+					var B = Vector2(projectDistance*shadowDir, height*shadowDir)
+					# The nex point's vanishing extension
+					var D = Vector2(nextPoint.x - get_parent().position.x, nextPoint.y - get_parent().position.y)
+					# The next point
+					var C = Vector2(projectDistance*nextShadowDir, nextHeight*nextShadowDir)
+				
+					draw_polygon([A,B,C],shadowColor)
+					draw_polygon([A,C,D],shadowColor)
+					
+					#draw_line(A,B,Color.GREEN, 1.0)
+					#draw_line(B,C,Color.RED, 1.0)
+					#draw_line(C,D,Color.GREEN, 1.0)
+					#draw_line(D,A,Color.GREEN, 1.0)
+					
+					#draw_line(Vector2(160*shadowDir, height*shadowDir), Vector2(point.x - get_parent().position.x, point.y - get_parent().position.y), Color.GREEN, 1.0)
+					
 
 
 

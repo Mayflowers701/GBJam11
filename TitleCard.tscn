@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://k3bb8hb4ce7j"]
+[gd_scene load_steps=4 format=3 uid="uid://k3bb8hb4ce7j"]
 
 [ext_resource type="Texture2D" uid="uid://ble6xdnh2bwjy" path="res://NegativeSpace.png" id="1_1m0h1"]
 [ext_resource type="Script" path="res://TitleCard.gd" id="1_kksk2"]
+[ext_resource type="Script" path="res://EvaIntro.gd" id="2_wc0m6"]
 
 [node name="TitleCard" type="Node2D"]
 script = ExtResource("1_kksk2")
@@ -10,6 +11,10 @@ script = ExtResource("1_kksk2")
 offset_right = 160.0
 offset_bottom = 144.0
 color = Color(0.0901961, 0.0392157, 0.133333, 1)
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(80, 72)
+script = ExtResource("2_wc0m6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(80, 72)

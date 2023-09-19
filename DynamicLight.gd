@@ -41,6 +41,11 @@ func _draw():
 	# Iterate through all CollisionPolygon2D within the CollisionMap
 	if collisionMap:
 		for child_index in range(collisionMap.get_child_count()):
+			break
+			"""
+			if abs(collisionMap.get_child(child_index).position.x - position.x) > 160:
+				break
+			"""
 			
 			# Check if this child is a CollisionPolygon2D node
 			var child = collisionMap.get_child(child_index)
@@ -61,6 +66,9 @@ func _draw():
 					"""
 					var point = child.polygon[pt_index]
 					var nextPoint
+					
+					if (point.x - get_parent().position.x) > 160:
+						continue
 					
 					# If we're at the end of the polygon, the first vertex is next
 					if pt_index < child.polygon.size()-1:

@@ -1,18 +1,18 @@
-[gd_scene load_steps=12 format=3 uid="uid://cayhchuroll3t"]
+[gd_scene load_steps=12 format=3 uid="uid://b6vyfwkihavnu"]
 
-[ext_resource type="Texture2D" uid="uid://bg6g5aptl3uyh" path="res://8PxTilePlaceholders.png" id="1_6frlx"]
-[ext_resource type="AudioStream" uid="uid://mww11prk2iaa" path="res://Babbling-brook-sounds.mp3" id="2_dnx1x"]
-[ext_resource type="PackedScene" uid="uid://42grynypajcv" path="res://Player.tscn" id="3_iw4by"]
-[ext_resource type="Texture2D" uid="uid://duahjbo5xv3g" path="res://horror_plat_walls.png" id="4_jcspo"]
-[ext_resource type="Script" path="res://ZShadows.gd" id="5_5a1qe"]
-[ext_resource type="Script" path="res://Tutorial.gd" id="6_tftsp"]
+[ext_resource type="Texture2D" uid="uid://bg6g5aptl3uyh" path="res://8PxTilePlaceholders.png" id="1_ms1ca"]
+[ext_resource type="AudioStream" uid="uid://mww11prk2iaa" path="res://Babbling-brook-sounds.mp3" id="2_nhq63"]
+[ext_resource type="PackedScene" uid="uid://42grynypajcv" path="res://Player.tscn" id="3_jwaii"]
+[ext_resource type="Texture2D" uid="uid://duahjbo5xv3g" path="res://horror_plat_walls.png" id="4_6fol6"]
+[ext_resource type="Script" path="res://ZShadows.gd" id="5_u82gh"]
+[ext_resource type="Script" path="res://Tutorial.gd" id="6_ilijv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_skq5i"]
 size = Vector2(100.089, 10)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i64hi"]
 resource_name = "Greyscale"
-texture = ExtResource("1_6frlx")
+texture = ExtResource("1_ms1ca")
 texture_region_size = Vector2i(8, 8)
 0:0/0 = 0
 1:0/0 = 0
@@ -24,7 +24,7 @@ tile_size = Vector2i(8, 8)
 sources/0 = SubResource("TileSetAtlasSource_i64hi")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a2d2x"]
-texture = ExtResource("4_jcspo")
+texture = ExtResource("4_6fol6")
 texture_region_size = Vector2i(8, 8)
 0:0/0 = 0
 0:0/0/terrain_set = 0
@@ -765,7 +765,7 @@ default_color = Color(0.145098, 0.164706, 0.313726, 1)
 [node name="ColorRect" type="ColorRect" parent="Background"]
 offset_left = 192.0
 offset_top = 16.0
-offset_right = 208.0
+offset_right = 424.0
 offset_bottom = 144.0
 color = Color(0.145098, 0.164706, 0.313726, 1)
 
@@ -784,7 +784,7 @@ offset_bottom = 104.0
 color = Color(0.145098, 0.164706, 0.313726, 1)
 
 [node name="ColorRect4" type="ColorRect" parent="Background"]
-offset_left = 208.0
+offset_left = 424.0
 offset_right = 736.0
 offset_bottom = 144.0
 color = Color(0.145098, 0.164706, 0.313726, 1)
@@ -866,15 +866,15 @@ format = 2
 
 [node name="SoundTest" type="Sprite2D" parent="."]
 position = Vector2(0, -24)
-texture = ExtResource("1_6frlx")
+texture = ExtResource("1_ms1ca")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SoundTest"]
-stream = ExtResource("2_dnx1x")
+stream = ExtResource("2_nhq63")
 max_distance = 155.0
 attenuation = 2.75
 panning_strength = 2.0
 
-[node name="Player" parent="." instance=ExtResource("3_iw4by")]
+[node name="Player" parent="." instance=ExtResource("3_jwaii")]
 position = Vector2(208, 96)
 
 [node name="TileMapFinal" type="TileMap" parent="."]
@@ -883,7 +883,7 @@ format = 2
 layer_0/tile_data = PackedInt32Array(851985, 196608, 0, 851986, 393216, 0, 851987, 327680, 0, 851988, 0, 0, 851989, 131072, 0, 851990, 131072, 0, 851991, 131072, 0, 851992, 0, 0, 851993, 196608, 0, 851994, 0, 0, 851995, 131072, 0, 851996, 65536, 0, 851997, 196608, 0, 851998, 262144, 0, 851999, 131072, 0, 852000, 65536, 0, 852001, 393216, 0, 852002, 131072, 0, 852003, 262144, 0, 852004, 393216, 0, 852005, 0, 0, 655397, 327680, 11, 589861, 196608, 10, 524325, 65536, 10, 458789, 0, 10, 393253, 458752, 10, 327717, 262144, 10, 262181, 393216, 12, 262180, 0, 1, 262179, 458752, 1, 262178, 65536, 1, 262177, 393216, 1, 262176, 393216, 1, 262175, 65536, 1, 262174, 393216, 1, 262173, 196608, 1, 262172, 196608, 1, 262171, 196608, 1, 262170, 65536, 1, 262169, 0, 1, 262168, 458752, 1, 262167, 327680, 1, 851979, 196608, 0, 851980, 0, 0, 851981, 196608, 0, 851982, 196608, 0, 851983, 131072, 0, 851984, 262144, 0, 589862, 262144, 12, 589863, 393216, 12, 589864, 327680, 12, 589865, 327680, 12, 589866, 393216, 12, 589867, 65536, 12, 589868, 393216, 12, 589869, 65536, 12, 589870, 262144, 11, 589871, 131072, 11, 852006, 196608, 0, 852007, 327680, 0, 852008, 196608, 0, 852009, 393216, 0, 852010, 131072, 0, 852011, 458752, 0, 852012, 262144, 4, 786476, 458752, 13, 786477, 393216, 0, 786478, 458752, 0, 786479, 65536, 0, 786480, 327680, 0, 786481, 393216, 0, 786482, 0, 0, 786483, 393216, 0, 786484, 131072, 12, 720948, 393216, 11, 655412, 262144, 11, 589876, 327680, 11, 524340, 65536, 11, 262163, 458752, 1, 262164, 65536, 1, 262165, 327680, 1, 262166, 262144, 1, 786442, 458752, 3, 851978, 327680, 3, 65588, 131072, 11, 131124, 196608, 13, 196660, 327680, 2, 262196, 327680, 11, 720906, 196608, 7, 524335, 262144, 11, 458799, 0, 3, 393263, 458752, 7, 524341, 65536, 13, 524342, 0, 0, 524343, 458752, 0, 524344, 327680, 0, 524345, 65536, 0, 524346, 458752, 0, 524347, 196608, 0, 524348, 393216, 12, 524349, 327680, 10, 458813, 262144, 10, 393277, 196608, 10, 327741, 131072, 10, 262205, 393216, 10, 196669, 262144, 10, 131133, 458752, 10, 131132, 131072, 12, 131131, 327680, 12, 131130, 131072, 12, 131129, 458752, 12, 131128, 393216, 12, 131127, 65536, 13, 327736, 393216, 10, 327735, 262144, 12, 327734, 458752, 12, 327733, 65536, 12, 327732, 327680, 12, 327731, 196608, 12, 327730, 458752, 12, 327729, 327680, 12, 327728, 262144, 12, 327727, 0, 12, 52, 393216, 11, 53, 262144, 11, 54, 458752, 11, 55, 65536, 11, 56, 327680, 11, 57, 0, 11, 58, 0, 11, 59, 458752, 11, 60, 327680, 11, 61, 131072, 11, 62, 262144, 11, 63, 131072, 11, 64, 262144, 11, 65, 458752, 11, 66, 0, 11, 67, 262144, 11, 68, 458752, 11, 69, 196608, 11, 70, 327680, 11, 71, 458752, 11, 72, 65536, 11, 73, 131072, 11, 74, 327680, 11, 75, 0, 11, 76, 65536, 11, 77, 458752, 11, 78, 65536, 11, 79, 262144, 11, 80, 196608, 11, 81, 131072, 11, 82, 131072, 11, 83, 65536, 11, 84, 458752, 11, 85, 458752, 11, 86, 262144, 11, 87, 393216, 11, 88, 0, 11, 589885, 262144, 11, 852029, 65536, 0, 852030, 327680, 0, 852031, 393216, 0, 852032, 327680, 0, 852033, 131072, 0, 852034, 262144, 0, 852035, 262144, 0, 852036, 196608, 0, 852037, 393216, 0, 852038, 262144, 0, 852039, 196608, 0, 852040, 131072, 0, 852041, 262144, 0, 852042, 0, 0, 852043, 393216, 0, 852044, 65536, 0, 852045, 196608, 0, 852046, 458752, 0, 852047, 131072, 0, 852048, 0, 0, 852049, 262144, 0, 852050, 393216, 0, 852051, 393216, 0, 852052, 131072, 0, 852053, 393216, 0, 852054, 393216, 0, 852055, 327680, 0, 852056, 65536, 0, 852057, 131072, 0, 852058, 458752, 0, 852059, 131072, 12, 65624, 0, 9, 131160, 131072, 9, 196696, 262144, 9, 262232, 327680, 9, 327768, 458752, 9, 393304, 196608, 9, 458840, 327680, 9, 524376, 196608, 9, 589912, 458752, 11, 589913, 0, 11, 589914, 393216, 11, 589915, 131072, 11, 65602, 262144, 9, 131138, 0, 9, 196674, 393216, 9, 262210, 196608, 9, 327746, 131072, 9, 393282, 393216, 9, 458818, 393216, 9, 524354, 393216, 9, 589890, 327680, 11, 589891, 327680, 11, 589892, 0, 11, 589893, 458752, 10, 65605, 0, 11, 131141, 327680, 11, 196677, 262144, 11, 262213, 393216, 11, 327749, 327680, 11, 393285, 196608, 11, 458821, 458752, 11, 524357, 262144, 3, 589884, 131072, 11, 589883, 0, 11, 589882, 458752, 11, 589881, 458752, 11, 589880, 458752, 11, 852028, 0, 0, 852027, 65536, 8, 852026, 131072, 1, 852025, 65536, 1, 852024, 458752, 13, 589879, 65536, 12, 852023, 65536, 3, 786487, 131072, 3, 720951, 393216, 3, 655415, 393216, 7, 786489, 458752, 7, 786490, 327680, 7, 786491, 458752, 7)
 
 [node name="ZShadows" type="Polygon2D" parent="."]
-script = ExtResource("5_5a1qe")
+script = ExtResource("5_u82gh")
 
 [node name="Line2D" type="Line2D" parent="ZShadows"]
 points = PackedVector2Array(380, 76, 300, 76)
@@ -942,4 +942,4 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="Tutorial" type="CanvasLayer" parent="."]
-script = ExtResource("6_tftsp")
+script = ExtResource("6_ilijv")

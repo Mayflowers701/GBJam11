@@ -26,7 +26,7 @@ func _ready():
 	# CRITICAL
 	z_index = 1
 
-func _draw():
+func _draw():  
 	#draw_line(Vector2(0, 0), Vector2(playerPos.x, playerPos.y), Color.GREEN, 1.0)
 	#draw_line(Vector2(0, 144), Vector2(playerPos.x, playerPos.y), Color.GREEN, 1.0)
 	#draw_line(Vector2(160, 144), Vector2(playerPos.x + parentPos.origin.x, playerPos.y), Color.GREEN, 1.0)
@@ -44,6 +44,11 @@ func _draw():
 	# Iterate through all CollisionPolygon2D within the CollisionMap
 	if collisionMap:
 		for child_index in range(collisionMap.get_child_count()):
+			"""
+			if abs((collisionMap.get_child(child_index).position.x - get_parent().position.x) - position.x) > 160:
+				print("Skip")
+				continue
+			"""
 			
 			# Check if this child is a CollisionPolygon2D node
 			var child = collisionMap.get_child(child_index)
@@ -56,6 +61,7 @@ func _draw():
 				#var globalTrans = child.get_global_transform()
 				
 				for pt_index in child.points.size():
+
 					"""
 					var query = PhysicsRayQueryParameters2D.create(Vector2(0, 0), Vector2(point.x, point.y))
 					var result = space_state.intersect_ray(query)
@@ -64,6 +70,9 @@ func _draw():
 					"""
 					var point = child.points[pt_index]
 					var nextPoint
+					
+					if (point.x - get_parent().position.x) > 160:
+						continue
 					
 					# If we're at the end of the polygon, the first vertex is next
 					if pt_index < child.points.size()-1:

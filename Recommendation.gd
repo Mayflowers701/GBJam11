@@ -1,15 +1,17 @@
-extends Camera2D
+extends Label
 
+var timer = 170
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	position.x = float(get_parent().facing * 40)
-	#pass # Replace with function body.
+	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
-	position.x = lerp(position.x, float(get_parent().facing * 40), 0.05)
+	timer -= 1
+	if timer <= 0:
+		queue_free()
 	
-	#pass
+	pass

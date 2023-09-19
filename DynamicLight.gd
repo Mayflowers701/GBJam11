@@ -20,7 +20,7 @@ func _ready():
 		playerFacing = player.facing
 	parentPos = get_canvas_transform()
 	
-	testPoly = get_node("/root/World/CollisionMap/LightingTestPolygon")
+	#testPoly = get_node("/root/World/CollisionMap/LightingTestPolygon")
 	collisionMap = get_node("/root/World/CollisionMap")
 
 func _draw():
@@ -45,8 +45,12 @@ func _draw():
 			# Check if this child is a CollisionPolygon2D node
 			var child = collisionMap.get_child(child_index)
 			if child is CollisionPolygon2D:
+				var colPosX = child.position.x
+				var colPosY = child.position.y
+				
 				var space_state = get_world_2d().direct_space_state
 				var poly = child.polygon
+				#var globalTrans = child.get_global_transform()
 				
 				for pt_index in child.polygon.size():
 					"""
@@ -67,25 +71,25 @@ func _draw():
 					var projectDistance = 1600
 					
 					# Get x proportion from player compared to edge of screen
-					var ratio = projectDistance / (point.x - get_parent().position.x)
-					var height = ratio*(point.y - get_parent().position.y)
+					var ratio = projectDistance / (point.x - get_parent().position.x + colPosX)
+					var height = ratio*(point.y - get_parent().position.y + colPosY)
 					var shadowDir = sign(ratio)
 					if shadowDir == 0:
 						shadowDir = 1;
 					
-					var nextRatio = projectDistance / (nextPoint.x - get_parent().position.x)
-					var nextHeight = nextRatio*(nextPoint.y - get_parent().position.y)
+					var nextRatio = projectDistance / (nextPoint.x - get_parent().position.x  + colPosX)
+					var nextHeight = nextRatio*(nextPoint.y - get_parent().position.y + colPosY)
 					var nextShadowDir = sign(nextRatio)
 					if nextShadowDir == 0:
 						nextShadowDir = 0
 					
 					# Create our four points for our polygon
 					# This point
-					var A = Vector2(point.x - get_parent().position.x, point.y - get_parent().position.y)
+					var A = Vector2(point.x - get_parent().position.x + colPosX, point.y - get_parent().position.y + colPosY)
 					# It's vanishing extension
 					var B = Vector2(projectDistance*shadowDir, height*shadowDir)
 					# The nex point's vanishing extension
-					var D = Vector2(nextPoint.x - get_parent().position.x, nextPoint.y - get_parent().position.y)
+					var D = Vector2(nextPoint.x - get_parent().position.x + colPosX, nextPoint.y - get_parent().position.y + colPosY)
 					# The next point
 					var C = Vector2(projectDistance*nextShadowDir, nextHeight*nextShadowDir)
 				

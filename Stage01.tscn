@@ -797,6 +797,10 @@ color = Color(0.145098, 0.164706, 0.313726, 1)
 position = Vector2(132, 0)
 polygon = PackedVector2Array(-12, 104, 164, 104, 164, 144, -12, 144)
 
+[node name="CollisionPolygon2D17" type="CollisionPolygon2D" parent="CollisionMap"]
+position = Vector2(132, 0)
+polygon = PackedVector2Array(284, 64, 316, 64, 316, 104, 284, 104)
+
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="CollisionMap"]
 position = Vector2(132, 0)
 polygon = PackedVector2Array(76, 0, 20, 40, 164, 40, 164, 0)
@@ -817,11 +821,11 @@ polygon = PackedVector2Array(228, 104, 668, 104, 668, 144, 228, 144)
 polygon = PackedVector2Array(88, 88, 80, 96, 80, 104, 88, 104)
 
 [node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="CollisionMap"]
-polygon = PackedVector2Array(352, 104, 352, 96, 488, 96, 488, 104)
+polygon = PackedVector2Array(352, 104, 352, 96, 424, 96, 424, 104)
 
 [node name="CollisionPolygon2D8" type="CollisionPolygon2D" parent="CollisionMap"]
 position = Vector2(-64, 0)
-polygon = PackedVector2Array(552, 96, 552, 64, 480, 64, 480, 96)
+polygon = PackedVector2Array(552, 80, 552, 64, 480, 64, 480, 80)
 
 [node name="CollisionPolygon2D9" type="CollisionPolygon2D" parent="CollisionMap"]
 position = Vector2(0, 8)
@@ -837,7 +841,7 @@ position = Vector2(0, 8)
 polygon = PackedVector2Array(376, 40, 456, 40, 456, 32, 376, 32)
 
 [node name="CollisionPolygon2D11" type="CollisionPolygon2D" parent="CollisionMap"]
-polygon = PackedVector2Array(496, 104, 496, 16, 488, 16, 488, 104)
+polygon = PackedVector2Array(496, 80, 496, 16, 488, 16, 488, 80)
 
 [node name="CollisionPolygon2D12" type="CollisionPolygon2D" parent="CollisionMap"]
 polygon = PackedVector2Array(488, 16, 488, 24, 440, 24, 440, 16)
@@ -904,7 +908,7 @@ points = PackedVector2Array(380, 76, 380, 44, 420, 44, 420, 4, 708, 4, 708, 76, 
 width = 1.0
 
 [node name="Line2D7" type="Line2D" parent="ZShadows"]
-points = PackedVector2Array(420, 68, 492, 68, 492, 108, 748, 108)
+points = PackedVector2Array(420, 68, 492, 68)
 width = 1.0
 
 [node name="Line2D8" type="Line2D" parent="ZShadows"]
@@ -925,6 +929,10 @@ width = 1.0
 
 [node name="Line2D12" type="Line2D" parent="ZShadows"]
 points = PackedVector2Array(532, 76, 556, 76)
+width = 1.0
+
+[node name="Line2D13" type="Line2D" parent="ZShadows"]
+points = PackedVector2Array(492, 68, 492, 76, 444, 76, 444, 108, 460, 108, 460, 100, 476, 100, 476, 108, 748, 108)
 width = 1.0
 
 [node name="Label" type="Label" parent="."]

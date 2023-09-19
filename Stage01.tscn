@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cayhchuroll3t"]
+[gd_scene load_steps=12 format=3 uid="uid://cayhchuroll3t"]
 
 [ext_resource type="Texture2D" uid="uid://bg6g5aptl3uyh" path="res://8PxTilePlaceholders.png" id="1_6frlx"]
 [ext_resource type="AudioStream" uid="uid://mww11prk2iaa" path="res://Babbling-brook-sounds.mp3" id="2_dnx1x"]
 [ext_resource type="PackedScene" uid="uid://42grynypajcv" path="res://Player.tscn" id="3_iw4by"]
 [ext_resource type="Texture2D" uid="uid://duahjbo5xv3g" path="res://horror_plat_walls.png" id="4_jcspo"]
 [ext_resource type="Script" path="res://ZShadows.gd" id="5_5a1qe"]
+[ext_resource type="Script" path="res://Tutorial.gd" id="6_tftsp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_skq5i"]
 size = Vector2(100.089, 10)
@@ -764,7 +765,7 @@ default_color = Color(0.145098, 0.164706, 0.313726, 1)
 [node name="ColorRect" type="ColorRect" parent="Background"]
 offset_left = 192.0
 offset_top = 16.0
-offset_right = 488.0
+offset_right = 424.0
 offset_bottom = 144.0
 color = Color(0.145098, 0.164706, 0.313726, 1)
 
@@ -780,6 +781,12 @@ offset_left = 88.0
 offset_top = 88.0
 offset_right = 200.0
 offset_bottom = 104.0
+color = Color(0.145098, 0.164706, 0.313726, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="Background"]
+offset_left = 424.0
+offset_right = 736.0
+offset_bottom = 144.0
 color = Color(0.145098, 0.164706, 0.313726, 1)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
@@ -804,7 +811,7 @@ polygon = PackedVector2Array(224, 0, 224, 88, 232, 88, 232, 0)
 
 [node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="CollisionMap"]
 position = Vector2(68, 0)
-polygon = PackedVector2Array(228, 104, 420, 104, 420, 144, 228, 144)
+polygon = PackedVector2Array(228, 104, 668, 104, 668, 144, 228, 144)
 
 [node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="CollisionMap"]
 polygon = PackedVector2Array(88, 88, 80, 96, 80, 104, 88, 104)
@@ -814,23 +821,35 @@ polygon = PackedVector2Array(352, 104, 352, 96, 488, 96, 488, 104)
 
 [node name="CollisionPolygon2D8" type="CollisionPolygon2D" parent="CollisionMap"]
 position = Vector2(-64, 0)
-polygon = PackedVector2Array(488, 96, 488, 16, 480, 16, 480, 96)
+polygon = PackedVector2Array(552, 96, 552, 64, 480, 64, 480, 96)
 
 [node name="CollisionPolygon2D9" type="CollisionPolygon2D" parent="CollisionMap"]
 position = Vector2(0, 8)
-polygon = PackedVector2Array(304, 72, 392, 72, 392, 64, 304, 64)
-
-[node name="CollisionPolygon2D10" type="CollisionPolygon2D" parent="CollisionMap"]
-position = Vector2(-64, 16)
-polygon = PackedVector2Array(480, 40, 480, 32, 392, 32, 392, 40)
-
-[node name="CollisionPolygon2D11" type="CollisionPolygon2D" parent="CollisionMap"]
-polygon = PackedVector2Array(304, 0, 304, 16, 424, 16, 424, 0)
+polygon = PackedVector2Array(304, 72, 384, 72, 384, 40, 304, 40)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionMap"]
 position = Vector2(118, 58.0742)
 rotation = -0.661331
 shape = SubResource("RectangleShape2D_skq5i")
+
+[node name="CollisionPolygon2D10" type="CollisionPolygon2D" parent="CollisionMap"]
+position = Vector2(0, 8)
+polygon = PackedVector2Array(376, 40, 456, 40, 456, 32, 376, 32)
+
+[node name="CollisionPolygon2D11" type="CollisionPolygon2D" parent="CollisionMap"]
+polygon = PackedVector2Array(496, 104, 496, 16, 488, 16, 488, 104)
+
+[node name="CollisionPolygon2D12" type="CollisionPolygon2D" parent="CollisionMap"]
+polygon = PackedVector2Array(488, 16, 488, 24, 440, 24, 440, 16)
+
+[node name="CollisionPolygon2D13" type="CollisionPolygon2D" parent="CollisionMap"]
+polygon = PackedVector2Array(424, 40, 424, 8, 416, 8, 416, 40)
+
+[node name="CollisionPolygon2D14" type="CollisionPolygon2D" parent="CollisionMap"]
+polygon = PackedVector2Array(416, 0, 704, 0, 704, 8, 416, 8)
+
+[node name="CollisionPolygon2D15" type="CollisionPolygon2D" parent="CollisionMap"]
+polygon = PackedVector2Array(704, 0, 736, 0, 736, 88, 704, 88)
 
 [node name="TileMapBlack" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_85h7i")
@@ -852,24 +871,17 @@ position = Vector2(208, 96)
 [node name="TileMapFinal" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_s6v7n")
 format = 2
-layer_0/tile_data = PackedInt32Array(851985, 196608, 0, 851986, 393216, 0, 851987, 327680, 0, 851988, 0, 0, 851989, 131072, 0, 851990, 131072, 0, 851991, 131072, 0, 851992, 0, 0, 851993, 196608, 0, 851994, 0, 0, 851995, 131072, 0, 851996, 65536, 0, 851997, 196608, 0, 851998, 262144, 0, 851999, 131072, 0, 852000, 65536, 0, 852001, 393216, 0, 852002, 131072, 0, 852003, 262144, 0, 852004, 393216, 0, 852005, 0, 0, 655397, 327680, 11, 589861, 196608, 10, 524325, 65536, 10, 458789, 0, 10, 393253, 458752, 10, 327717, 262144, 10, 262181, 393216, 12, 262180, 327680, 8, 262179, 458752, 1, 262178, 65536, 1, 262177, 393216, 1, 262176, 393216, 1, 262175, 65536, 1, 262174, 393216, 1, 262173, 196608, 1, 262172, 196608, 1, 262171, 196608, 1, 262170, 65536, 1, 262169, 0, 1, 262168, 458752, 1, 262167, 327680, 1, 851979, 196608, 0, 851980, 0, 0, 851981, 196608, 0, 851982, 196608, 0, 851983, 131072, 0, 851984, 262144, 0, 589862, 262144, 12, 589863, 393216, 12, 589864, 327680, 12, 589865, 327680, 12, 589866, 393216, 12, 589867, 65536, 12, 589868, 393216, 12, 589869, 327680, 12, 589870, 0, 12, 589871, 458752, 12, 589872, 196608, 12, 852006, 196608, 0, 852007, 327680, 0, 852008, 196608, 0, 852009, 393216, 0, 852010, 131072, 0, 852011, 458752, 0, 852012, 262144, 4, 786476, 458752, 13, 786477, 393216, 0, 786478, 458752, 0, 786479, 65536, 0, 786480, 327680, 0, 786481, 393216, 0, 786482, 0, 0, 786483, 393216, 0, 786484, 327680, 4, 720948, 0, 9, 655412, 131072, 9, 589876, 393216, 9, 524340, 0, 9, 458804, 196608, 11, 393268, 131072, 2, 393267, 458752, 10, 393259, 262144, 10, 393258, 196608, 10, 393257, 393216, 10, 262163, 458752, 1, 262164, 65536, 1, 262165, 327680, 1, 262166, 262144, 1, 786442, 458752, 3, 851978, 327680, 3, 196645, 0, 11, 131109, 131072, 3, 65573, 65536, 4, 65574, 0, 1, 65575, 458752, 1, 65576, 327680, 1, 65577, 196608, 1, 65578, 196608, 1, 65579, 65536, 1, 65580, 131072, 1, 65581, 0, 1, 65582, 327680, 1, 65583, 393216, 1, 65584, 458752, 1, 65585, 65536, 1, 65586, 196608, 1, 65587, 393216, 1, 65588, 458752, 1, 131124, 131072, 9, 196660, 327680, 2, 262196, 327680, 11, 327732, 458752, 2, 720906, 196608, 7, 393266, 458752, 10, 393265, 393216, 10, 393264, 393216, 10, 393263, 262144, 10, 393262, 458752, 10, 393261, 393216, 10, 393260, 393216, 10)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer_0/tile_data = PackedInt32Array(851985, 196608, 0, 851986, 393216, 0, 851987, 327680, 0, 851988, 0, 0, 851989, 131072, 0, 851990, 131072, 0, 851991, 131072, 0, 851992, 0, 0, 851993, 196608, 0, 851994, 0, 0, 851995, 131072, 0, 851996, 65536, 0, 851997, 196608, 0, 851998, 262144, 0, 851999, 131072, 0, 852000, 65536, 0, 852001, 393216, 0, 852002, 131072, 0, 852003, 262144, 0, 852004, 393216, 0, 852005, 0, 0, 655397, 327680, 11, 589861, 196608, 10, 524325, 65536, 10, 458789, 0, 10, 393253, 458752, 10, 327717, 262144, 10, 262181, 393216, 12, 262180, 0, 1, 262179, 458752, 1, 262178, 65536, 1, 262177, 393216, 1, 262176, 393216, 1, 262175, 65536, 1, 262174, 393216, 1, 262173, 196608, 1, 262172, 196608, 1, 262171, 196608, 1, 262170, 65536, 1, 262169, 0, 1, 262168, 458752, 1, 262167, 327680, 1, 851979, 196608, 0, 851980, 0, 0, 851981, 196608, 0, 851982, 196608, 0, 851983, 131072, 0, 851984, 262144, 0, 589862, 262144, 12, 589863, 393216, 12, 589864, 327680, 12, 589865, 327680, 12, 589866, 393216, 12, 589867, 65536, 12, 589868, 393216, 12, 589869, 65536, 12, 589870, 262144, 11, 589871, 131072, 11, 852006, 196608, 0, 852007, 327680, 0, 852008, 196608, 0, 852009, 393216, 0, 852010, 131072, 0, 852011, 458752, 0, 852012, 262144, 4, 786476, 458752, 13, 786477, 393216, 0, 786478, 458752, 0, 786479, 65536, 0, 786480, 327680, 0, 786481, 393216, 0, 786482, 0, 0, 786483, 393216, 0, 786484, 327680, 4, 720948, 0, 9, 655412, 131072, 9, 589876, 327680, 11, 524340, 65536, 11, 262163, 458752, 1, 262164, 65536, 1, 262165, 327680, 1, 262166, 262144, 1, 786442, 458752, 3, 851978, 327680, 3, 65588, 131072, 11, 131124, 196608, 13, 196660, 327680, 2, 262196, 327680, 11, 720906, 196608, 7, 524335, 262144, 11, 458799, 0, 3, 393263, 458752, 7, 524341, 262144, 0, 524342, 0, 0, 524343, 458752, 0, 524344, 327680, 0, 524345, 65536, 0, 524346, 458752, 0, 524347, 196608, 0, 524348, 393216, 12, 524349, 327680, 10, 458813, 262144, 10, 393277, 196608, 10, 327741, 131072, 10, 262205, 393216, 10, 196669, 262144, 10, 131133, 458752, 10, 131132, 131072, 12, 131131, 327680, 12, 131130, 131072, 12, 131129, 458752, 12, 131128, 393216, 12, 131127, 65536, 13, 327736, 393216, 10, 327735, 262144, 12, 327734, 458752, 12, 327733, 65536, 12, 327732, 327680, 12, 327731, 196608, 12, 327730, 458752, 12, 327729, 327680, 12, 327728, 262144, 12, 327727, 0, 12, 52, 393216, 11, 53, 262144, 11, 54, 458752, 11, 55, 65536, 11, 56, 327680, 11, 57, 0, 11, 58, 0, 11, 59, 458752, 11, 60, 327680, 11, 61, 131072, 11, 62, 262144, 11, 63, 131072, 11, 64, 262144, 11, 65, 458752, 11, 66, 0, 11, 67, 262144, 11, 68, 458752, 11, 69, 196608, 11, 70, 327680, 11, 71, 458752, 11, 72, 65536, 11, 73, 131072, 11, 74, 327680, 11, 75, 0, 11, 76, 65536, 11, 77, 458752, 11, 78, 65536, 11, 79, 262144, 11, 80, 196608, 11, 81, 131072, 11, 82, 131072, 11, 83, 65536, 11, 84, 458752, 11, 85, 458752, 11, 86, 262144, 11, 87, 393216, 11, 88, 0, 11, 589885, 262144, 11, 655421, 0, 11, 720957, 393216, 11, 786493, 327680, 11, 852029, 196608, 8, 852030, 327680, 0, 852031, 393216, 0, 852032, 327680, 0, 852033, 131072, 0, 852034, 262144, 0, 852035, 262144, 0, 852036, 196608, 0, 852037, 393216, 0, 852038, 262144, 0, 852039, 196608, 0, 852040, 131072, 0, 852041, 262144, 0, 852042, 0, 0, 852043, 393216, 0, 852044, 65536, 0, 852045, 196608, 0, 852046, 458752, 0, 852047, 131072, 0, 852048, 0, 0, 852049, 262144, 0, 852050, 393216, 0, 852051, 393216, 0, 852052, 131072, 0, 852053, 393216, 0, 852054, 393216, 0, 852055, 327680, 0, 852056, 65536, 0, 852057, 131072, 0, 852058, 458752, 0, 852059, 131072, 12, 655448, 0, 11, 655449, 393216, 11, 655450, 327680, 11, 655451, 196608, 11, 65624, 0, 9, 131160, 131072, 9, 196696, 262144, 9, 262232, 327680, 9, 327768, 458752, 9, 393304, 196608, 9, 458840, 327680, 9, 524376, 196608, 9, 589912, 327680, 2)
 
 [node name="ZShadows" type="Polygon2D" parent="."]
-visible = false
 script = ExtResource("5_5a1qe")
 
 [node name="Line2D" type="Line2D" parent="ZShadows"]
-points = PackedVector2Array(388, 76, 304, 76)
+points = PackedVector2Array(380, 76, 300, 76)
 width = 1.0
 
 [node name="Line2D2" type="Line2D" parent="ZShadows"]
-points = PackedVector2Array(84, 92, 84, 108, 356, 108, 356, 100, 420, 100, 420, 12, 300, 12, 300, 76, 392, 76)
-width = 1.0
-
-[node name="Line2D3" type="Line2D" parent="ZShadows"]
-points = PackedVector2Array(420, 52, 328, 52)
+points = PackedVector2Array(84, 92, 84, 108, 356, 108, 356, 100, 420, 100, 420, 68)
 width = 1.0
 
 [node name="Line2D4" type="Line2D" parent="ZShadows"]
@@ -881,5 +893,28 @@ points = PackedVector2Array(356, 100, 356, 96)
 width = 1.0
 
 [node name="Line2D5" type="Line2D" parent="ZShadows"]
-points = PackedVector2Array(300, 76, 300, 88)
+points = PackedVector2Array(300, 36, 300, 88)
 width = 1.0
+
+[node name="Line2D3" type="Line2D" parent="ZShadows"]
+points = PackedVector2Array(380, 76, 380, 44, 420, 44, 420, 4, 708, 4, 708, 84, 748, 84)
+width = 1.0
+
+[node name="Line2D7" type="Line2D" parent="ZShadows"]
+points = PackedVector2Array(420, 68, 492, 68, 492, 108, 748, 108)
+width = 1.0
+
+[node name="Line2D8" type="Line2D" parent="ZShadows"]
+points = PackedVector2Array(440, 20, 492, 20, 492, 68)
+width = 1.0
+
+[node name="Line2D9" type="Line2D" parent="ZShadows"]
+points = PackedVector2Array(456, 44, 420, 44)
+width = 1.0
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Tutorial" type="CanvasLayer" parent="."]
+script = ExtResource("6_tftsp")

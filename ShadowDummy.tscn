@@ -1,35 +1,33 @@
-[gd_scene load_steps=18 format=3 uid="uid://42grynypajcv"]
+[gd_scene load_steps=16 format=3 uid="uid://dm4fqcvitt13q"]
 
-[ext_resource type="Script" path="res://Player.gd" id="1_xtmtc"]
-[ext_resource type="Texture2D" uid="uid://b6aueh7gbyeni" path="res://PlayerAnimated.png" id="2_mnptx"]
-[ext_resource type="Script" path="res://GameCamera.gd" id="3_ouqkk"]
-[ext_resource type="Script" path="res://DynamicLight.gd" id="4_jombq"]
-[ext_resource type="Texture2D" uid="uid://57rao52pmhbc" path="res://ShadowMap.png" id="4_ytouy"]
-[ext_resource type="Script" path="res://DynamicLightZ.gd" id="6_2gnub"]
-[ext_resource type="Script" path="res://ShadowOverlay.gd" id="6_t8d8d"]
+[ext_resource type="Script" path="res://Player.gd" id="1_k8s7s"]
+[ext_resource type="Texture2D" uid="uid://b6aueh7gbyeni" path="res://PlayerAnimated.png" id="2_707bc"]
+[ext_resource type="Script" path="res://GameCamera.gd" id="3_e8pwe"]
+[ext_resource type="Texture2D" uid="uid://57rao52pmhbc" path="res://ShadowMap.png" id="4_5ud2q"]
+[ext_resource type="Script" path="res://DynamicLight.gd" id="5_ahd31"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wjxf3"]
-atlas = ExtResource("2_mnptx")
+atlas = ExtResource("2_707bc")
 region = Rect2(0, 0, 10, 10)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jkmfd"]
-atlas = ExtResource("2_mnptx")
+atlas = ExtResource("2_707bc")
 region = Rect2(10, 0, 10, 10)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_21767"]
-atlas = ExtResource("2_mnptx")
+atlas = ExtResource("2_707bc")
 region = Rect2(20, 0, 10, 10)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wnhje"]
-atlas = ExtResource("2_mnptx")
+atlas = ExtResource("2_707bc")
 region = Rect2(0, 10, 10, 10)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g3hck"]
-atlas = ExtResource("2_mnptx")
+atlas = ExtResource("2_707bc")
 region = Rect2(10, 10, 10, 10)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pp1fm"]
-atlas = ExtResource("2_mnptx")
+atlas = ExtResource("2_707bc")
 region = Rect2(20, 10, 10, 10)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ldnwd"]
@@ -70,7 +68,7 @@ animations = [{
 size = Vector2(6, 7)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_34gw8"]
-atlas = ExtResource("4_ytouy")
+atlas = ExtResource("4_5ud2q")
 region = Rect2(0, 0, 400, 400)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_032y8"]
@@ -85,7 +83,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_xtmtc")
+script = ExtResource("1_k8s7s")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ldnwd")
@@ -104,23 +102,15 @@ limit_left = 0
 limit_top = 0
 limit_bottom = 144
 position_smoothing_speed = 2.0
-script = ExtResource("3_ouqkk")
+script = ExtResource("3_e8pwe")
+
+[node name="ShadowOverlay" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_032y8")
 
 [node name="DynamicLight" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 3.0
 offset_bottom = 3.0
-script = ExtResource("4_jombq")
-
-[node name="ShadowOverlay" type="AnimatedSprite2D" parent="."]
-visible = false
-sprite_frames = SubResource("SpriteFrames_032y8")
-script = ExtResource("6_t8d8d")
-
-[node name="DynamicLightZ" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 3.0
-offset_bottom = 3.0
-script = ExtResource("6_2gnub")
+script = ExtResource("5_ahd31")

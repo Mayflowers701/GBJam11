@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://r3k8frsd5cwy"]
+
+[ext_resource type="Script" path="res://overlayDynamicShadows.gd" id="1_8cefv"]
+[ext_resource type="Texture2D" uid="uid://cj4kapg8ba5db" path="res://star.png" id="2_wybg1"]
+
+[node name="OverlayDynamicShadows" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_8cefv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_wybg1")

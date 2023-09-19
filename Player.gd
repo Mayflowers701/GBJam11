@@ -27,10 +27,12 @@ var coyoteTime = coyoteTimeInit
 
 
 func _ready():
-	$ShadowOverlay.show()
+	#$ShadowOverlay.show()
 	pass
 
 func _physics_process(delta):
+	
+	#print(position.y)
 	
 	# Climb check
 	if Input.is_action_pressed("game_x") and is_on_wall():

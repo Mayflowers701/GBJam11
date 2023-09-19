@@ -27,7 +27,7 @@ var coyoteTime = coyoteTimeInit
 
 
 func _ready():
-	#$ShadowOverlay.show()
+	$ShadowOverlay.show()
 	pass
 
 func _physics_process(delta):
@@ -100,6 +100,7 @@ func _physics_process(delta):
 		facing = 1
 		$AnimatedSprite2D.flip_h = false
 		$ShadowOverlay.flip_h = false
+		
 		
 	#Update Light Direction (see DynamicLight for effects)
 	if(Input.is_action_pressed("game_up")):

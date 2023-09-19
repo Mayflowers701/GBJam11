@@ -1,11 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://cayhchuroll3t"]
+[gd_scene load_steps=11 format=3 uid="uid://cayhchuroll3t"]
 
 [ext_resource type="Texture2D" uid="uid://bg6g5aptl3uyh" path="res://8PxTilePlaceholders.png" id="1_6frlx"]
 [ext_resource type="AudioStream" uid="uid://mww11prk2iaa" path="res://Babbling-brook-sounds.mp3" id="2_dnx1x"]
 [ext_resource type="PackedScene" uid="uid://42grynypajcv" path="res://Player.tscn" id="3_iw4by"]
 [ext_resource type="Texture2D" uid="uid://duahjbo5xv3g" path="res://horror_plat_walls.png" id="4_jcspo"]
 [ext_resource type="Script" path="res://ZShadows.gd" id="5_5a1qe"]
-[ext_resource type="Texture2D" uid="uid://cj4kapg8ba5db" path="res://star.png" id="5_l73ho"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_skq5i"]
 size = Vector2(100.089, 10)
@@ -884,6 +883,3 @@ width = 1.0
 [node name="Line2D5" type="Line2D" parent="ZShadows"]
 points = PackedVector2Array(300, 76, 300, 88)
 width = 1.0
-
-[node name="ShadowTest" type="Sprite2D" parent="."]
-texture = ExtResource("5_l73ho")

@@ -100,13 +100,13 @@ current = true
 [node name="GameCamera" type="Camera2D" parent="."]
 position = Vector2(40, 0)
 limit_left = 0
-limit_top = 0
 limit_bottom = 144
-position_smoothing_speed = 2.0
+position_smoothing_speed = 1.0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 drag_left_margin = 0.1
 drag_right_margin = 0.1
+drag_bottom_margin = 0.1
 editor_draw_drag_margin = true
 script = ExtResource("3_ouqkk")
 

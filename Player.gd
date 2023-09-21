@@ -3,12 +3,13 @@ extends CharacterBody2D
 # Player Properties
 const SPEED = 60.0
 const JUMP_VELOCITY = -120.0
-var WALL_JUMP_VELOCITY = -100.0
+const WALL_JUMP_VELOCITY = -100.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 400#ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var direction = 1;
+var vDir = 0;
 var facing = 1;
 var lightSpeed = 0.2
 
@@ -25,12 +26,15 @@ var jumps = jumpsInit
 var coyoteTimeInit = 10
 var coyoteTime = coyoteTimeInit
 
-var doubleTapInit = 5
-var doubleTap = doubleTapInit
+var doubleTapInit = 15
+var doubleTap = 0
+
+var sprint = false
+var canSprint = true
 
 
 func _ready():
-	$ShadowOverlay.show()
+	#$ShadowOverlay.show()
 	pass
 
 func _physics_process(delta):
@@ -54,14 +58,40 @@ func _physics_process(delta):
 		if direction:
 			velocity.x = direction * SPEED
 		else:
+			sprint = false
 			velocity.x = move_toward(velocity.x, 0, SPEED)
+			
+	
+	# Sprint Check
+	# first tap check
+	if Input.is_action_just_pressed("game_left"):
+		# second tap check
+		if Input.is_action_just_pressed("game_left") && doubleTap > 0:
+			sprint = true
+		doubleTap = doubleTapInit
+	# first tap check
+	if Input.is_action_just_pressed("game_right"):
+		# second tap check
+		if Input.is_action_just_pressed("game_right") && doubleTap > 0:
+			sprint = true
+		doubleTap = doubleTapInit
+		
+	if sprint && canSprint:
+		velocity.x = direction * SPEED * 1.5
+		$Trail.emitting = true
+	else:
+		$Trail.emitting = false
+	
+	if doubleTap > 0:
+		doubleTap -= 1
 	
 	# Climb check
 	if Input.is_action_pressed("game_x") and is_on_wall() and !wallJumping:
 		isClimb = true
-		direction = Input.get_axis("game_up", "game_down")
-		if direction:
-			velocity.y = direction * climbSpeed
+		sprint = false
+		vDir = Input.get_axis("game_up", "game_down")
+		if vDir:
+			velocity.y = vDir * climbSpeed
 		else:
 			velocity.y = move_toward(velocity.y, 0, climbSpeed)
 	else:
@@ -79,7 +109,7 @@ func _physics_process(delta):
 	if is_on_floor():
 		coyoteTime = coyoteTimeInit
 		jumps = jumpsInit
-		WALL_JUMP_VELOCITY = -100
+		#WALL_JUMP_VELOCITY = -100
 
 	# Handle Jump.
 	if Input.is_action_just_pressed("game_z") and jumps and coyoteTime > 0:
@@ -90,11 +120,12 @@ func _physics_process(delta):
 	if is_on_wall() and !is_on_floor() and Input.is_action_just_pressed("game_z"):
 		wallJumping = true
 		isClimb = false
+		sprint = false
 		wallJumpTimer = wallJumpTimerInit
 		#direction *= -1
 		
 		velocity.y = WALL_JUMP_VELOCITY
-		WALL_JUMP_VELOCITY += 10
+		#WALL_JUMP_VELOCITY += 10
 		velocity.x = -facing * SPEED *2
 	
 	# Reset Wall Jump
@@ -127,5 +158,6 @@ func _physics_process(delta):
 		$AnimatedSprite2D.frame = 0
 	
 	if direction:
-		$AnimatedSprite2D.animation = "walk"
+		#$AnimatedSprite2D.animation = "walk"
+		pass
 	

@@ -30,7 +30,7 @@ func _draw():
 	draw_circle(Vector2(0,0), rad-48, Color.hex(0x170a22ff))
 	"""
 	
-	draw_rect(Rect2(Vector2(-rectW,-rectH), Vector2(2*rectW,2*rectH)), Color.hex(0x170a22ff), true, 0)
+	draw_rect(Rect2(Vector2(-rectW,-rectH), Vector2(2*rectW,2*rectH)), Color.hex(0x170a22ff), true)
 	
 	pass
 

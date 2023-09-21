@@ -14,7 +14,7 @@ func _ready():
 	
 
 func _draw():
-	draw_arc(Vector2(0,0), 80 + pow(time, 1), 1.0, 1+TAU, 50, Color.hex(0x170a22ff), 160.0, false)
+	draw_arc(Vector2(0,0), 80 + pow(time, 0.5), 1.0, 1+TAU, 50, Color.hex(0x170a22ff), 160.0, false)
 	#draw_arc()
 	
 	pass
@@ -31,7 +31,7 @@ func _process(delta):
 	if wait <= 0:
 		
 		queue_redraw()
-		time += 2
+		time += 150
 		
 		if !light:
 			$FlashlightSound.play()
@@ -39,7 +39,7 @@ func _process(delta):
 			lit.emit()
 		
 	
-	if time >= 160:
+	if sqrt(time) >= 160:
 		queue_free()
 	
 	pass

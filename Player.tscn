@@ -1,25 +1,19 @@
-[gd_scene load_steps=17 format=3 uid="uid://42grynypajcv"]
+[gd_scene load_steps=21 format=3 uid="uid://42grynypajcv"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_xtmtc"]
-[ext_resource type="Texture2D" uid="uid://b6aueh7gbyeni" path="res://PlayerAnimated.png" id="2_mnptx"]
 [ext_resource type="Texture2D" uid="uid://bg6g5aptl3uyh" path="res://8PxTilePlaceholders.png" id="3_jtg14"]
 [ext_resource type="Script" path="res://GameCamera.gd" id="3_ouqkk"]
 [ext_resource type="Script" path="res://DynamicLight.gd" id="4_jombq"]
 [ext_resource type="Texture2D" uid="uid://57rao52pmhbc" path="res://ShadowMap.png" id="4_ytouy"]
 [ext_resource type="Script" path="res://DynamicLightZ.gd" id="6_2gnub"]
 [ext_resource type="Script" path="res://ShadowOverlay.gd" id="6_t8d8d"]
+[ext_resource type="FontFile" uid="uid://cose7w0j0swd8" path="res://Pixolletta8px.ttf" id="8_k8ceo"]
+[ext_resource type="Script" path="res://LabelTest.gd" id="8_whit7"]
+[ext_resource type="Texture2D" uid="uid://ht7b48hsdkn" path="res://PlayerPlaceholder.png" id="10_iu2ql"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wjxf3"]
-atlas = ExtResource("2_mnptx")
-region = Rect2(0, 0, 10, 10)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jkmfd"]
-atlas = ExtResource("2_mnptx")
-region = Rect2(10, 0, 10, 10)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_21767"]
-atlas = ExtResource("2_mnptx")
-region = Rect2(20, 0, 10, 10)
+[sub_resource type="AtlasTexture" id="AtlasTexture_tu6qu"]
+atlas = ExtResource("3_jtg14")
+region = Rect2(0, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qy4at"]
 atlas = ExtResource("3_jtg14")
@@ -29,13 +23,7 @@ region = Rect2(0, 0, 8, 8)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wjxf3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jkmfd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_21767")
+"texture": SubResource("AtlasTexture_tu6qu")
 }],
 "loop": true,
 "name": &"look",
@@ -68,6 +56,24 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="LabelSettings" id="LabelSettings_cyx70"]
+line_spacing = 1.0
+font = ExtResource("8_k8ceo")
+font_size = 10
+
+[sub_resource type="Gradient" id="Gradient_l7204"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jhkp3"]
+gradient = SubResource("Gradient_l7204")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7xmm4"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+color_ramp = SubResource("GradientTexture1D_jhkp3")
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_xtmtc")
 
@@ -75,8 +81,7 @@ script = ExtResource("1_xtmtc")
 position = Vector2(-2.98023e-08, 1.5)
 scale = Vector2(0.75, 0.875)
 sprite_frames = SubResource("SpriteFrames_ldnwd")
-animation = &"walk"
-frame_progress = 0.217726
+animation = &"look"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1.5)
@@ -110,3 +115,17 @@ anchors_preset = 0
 offset_right = 3.0
 offset_bottom = 3.0
 script = ExtResource("6_2gnub")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_cyx70")
+script = ExtResource("8_whit7")
+
+[node name="Trail" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 12
+process_material = SubResource("ParticleProcessMaterial_7xmm4")
+texture = ExtResource("10_iu2ql")
+lifetime = 0.3

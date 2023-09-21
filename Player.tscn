@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Player.gd" id="1_xtmtc"]
 [ext_resource type="Texture2D" uid="uid://b6aueh7gbyeni" path="res://PlayerAnimated.png" id="2_mnptx"]
-[ext_resource type="Texture2D" uid="uid://ht7b48hsdkn" path="res://PlayerPlaceholder.png" id="3_18tpk"]
+[ext_resource type="Texture2D" uid="uid://bg6g5aptl3uyh" path="res://8PxTilePlaceholders.png" id="3_jtg14"]
 [ext_resource type="Script" path="res://GameCamera.gd" id="3_ouqkk"]
 [ext_resource type="Script" path="res://DynamicLight.gd" id="4_jombq"]
 [ext_resource type="Texture2D" uid="uid://57rao52pmhbc" path="res://ShadowMap.png" id="4_ytouy"]
@@ -21,9 +21,9 @@ region = Rect2(10, 0, 10, 10)
 atlas = ExtResource("2_mnptx")
 region = Rect2(20, 0, 10, 10)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tncyh"]
-atlas = ExtResource("3_18tpk")
-region = Rect2(0, 0, 10, 10)
+[sub_resource type="AtlasTexture" id="AtlasTexture_qy4at"]
+atlas = ExtResource("3_jtg14")
+region = Rect2(0, 0, 8, 8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ldnwd"]
 animations = [{
@@ -43,7 +43,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tncyh")
+"texture": SubResource("AtlasTexture_qy4at")
 }],
 "loop": true,
 "name": &"walk",
@@ -72,6 +72,8 @@ animations = [{
 script = ExtResource("1_xtmtc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2.98023e-08, 1.5)
+scale = Vector2(0.75, 0.875)
 sprite_frames = SubResource("SpriteFrames_ldnwd")
 animation = &"walk"
 frame_progress = 0.217726

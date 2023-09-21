@@ -1,11 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://b6vyfwkihavnu"]
 
 [ext_resource type="Texture2D" uid="uid://bg6g5aptl3uyh" path="res://8PxTilePlaceholders.png" id="1_ms1ca"]
-[ext_resource type="AudioStream" uid="uid://mww11prk2iaa" path="res://Babbling-brook-sounds.mp3" id="2_nhq63"]
 [ext_resource type="PackedScene" uid="uid://42grynypajcv" path="res://Player.tscn" id="3_jwaii"]
 [ext_resource type="Texture2D" uid="uid://duahjbo5xv3g" path="res://horror_plat_walls.png" id="4_6fol6"]
+[ext_resource type="Script" path="res://Pursuer.gd" id="5_htlcn"]
 [ext_resource type="Script" path="res://ZShadows.gd" id="5_u82gh"]
-[ext_resource type="Script" path="res://Tutorial.gd" id="6_ilijv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i64hi"]
 resource_name = "Greyscale"
@@ -744,6 +743,8 @@ terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_a2d2x")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_0kfqq"]
+
 [node name="World" type="Node2D"]
 
 [node name="Background" type="CanvasGroup" parent="."]
@@ -757,20 +758,22 @@ sources/0 = SubResource("TileSetAtlasSource_a2d2x")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionMap"]
 polygon = PackedVector2Array(0, 96, 160, 96, 160, 144, 0, 144)
 
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="CollisionMap"]
+polygon = PackedVector2Array(160, 88, 192, 88, 192, 108, 160, 108)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="CollisionMap"]
+polygon = PackedVector2Array(160, 64, 160, 56, 0, 56, 0, 64)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="CollisionMap"]
+polygon = PackedVector2Array(192, 0, 216, 0, 216, 112, 192, 112)
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="CollisionMap"]
+polygon = PackedVector2Array(104, 48, 96, 48, 96, 16, 104, 16)
+
 [node name="TileMapBlack" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_85h7i")
 format = 2
-layer_0/tile_data = PackedInt32Array(786451, 196608, 0, 786450, 196608, 0, 786449, 196608, 0, 786448, 196608, 0, 786447, 196608, 0, 786446, 196608, 0, 786445, 196608, 0, 786444, 196608, 0, 786443, 196608, 0, 786442, 196608, 0, 786441, 196608, 0, 786440, 196608, 0, 786439, 196608, 0, 786438, 196608, 0, 786437, 196608, 0, 786436, 196608, 0, 786435, 196608, 0, 786434, 196608, 0, 786433, 196608, 0, 786432, 196608, 0)
-
-[node name="SoundTest" type="Sprite2D" parent="."]
-position = Vector2(0, -24)
-texture = ExtResource("1_ms1ca")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SoundTest"]
-stream = ExtResource("2_nhq63")
-max_distance = 155.0
-attenuation = 2.75
-panning_strength = 2.0
+layer_0/tile_data = PackedInt32Array(786451, 196608, 0, 786450, 196608, 0, 786449, 196608, 0, 786448, 196608, 0, 786447, 196608, 0, 786446, 196608, 0, 786445, 196608, 0, 786444, 196608, 0, 786443, 196608, 0, 786442, 196608, 0, 786441, 196608, 0, 786440, 196608, 0, 786439, 196608, 0, 786438, 196608, 0, 786437, 196608, 0, 786436, 196608, 0, 786435, 196608, 0, 786434, 196608, 0, 786433, 196608, 0, 786432, 196608, 0, 458752, 196608, 0, 458753, 196608, 0, 458754, 196608, 0, 458755, 196608, 0, 458756, 196608, 0, 458757, 196608, 0, 458758, 196608, 0, 458759, 196608, 0, 458760, 196608, 0, 458761, 196608, 0, 458762, 196608, 0, 458763, 196608, 0, 458764, 196608, 0, 458765, 196608, 0, 458766, 196608, 0, 458767, 196608, 0, 458768, 196608, 0, 458769, 196608, 0, 458770, 196608, 0, 458771, 196608, 0, 131084, 196608, 0, 196620, 196608, 0, 262156, 196608, 0, 327692, 196608, 0, 720916, 196608, 0, 720917, 196608, 0, 720918, 196608, 0, 720919, 196608, 0, 720920, 196608, 0, 655384, 196608, 0, 589848, 196608, 0, 524312, 196608, 0, 458776, 196608, 0, 393240, 196608, 0, 327704, 196608, 0, 262168, 196608, 0, 196632, 196608, 0, 131096, 196608, 0, 65560, 196608, 0, 24, 196608, 0, 786452, 196608, 0)
 
 [node name="Player" parent="." instance=ExtResource("3_jwaii")]
 position = Vector2(80, 88)
@@ -782,9 +785,12 @@ format = 2
 [node name="ZShadows" type="Polygon2D" parent="."]
 script = ExtResource("5_u82gh")
 
-[node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="Pursuer" type="Area2D" parent="."]
+position = Vector2(16, 80)
+script = ExtResource("5_htlcn")
 
-[node name="Tutorial" type="CanvasLayer" parent="."]
-script = ExtResource("6_ilijv")
+[node name="CollisionCircle" type="CollisionShape2D" parent="Pursuer"]
+shape = SubResource("CircleShape2D_0kfqq")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Pursuer"]

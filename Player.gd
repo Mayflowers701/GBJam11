@@ -3,7 +3,7 @@ extends CharacterBody2D
 # Player Properties
 const SPEED = 60.0
 const JUMP_VELOCITY = -120.0
-const WALL_JUMP_VELOCITY = -100.0
+var WALL_JUMP_VELOCITY = -100.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 400#ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -13,7 +13,7 @@ var facing = 1;
 var lightSpeed = 0.2
 
 var isClimb = false
-var climbSpeed = 10
+var climbSpeed = 40
 
 var wallJumping = false
 var wallJumpTimerInit = 7
@@ -25,6 +25,9 @@ var jumps = jumpsInit
 var coyoteTimeInit = 10
 var coyoteTime = coyoteTimeInit
 
+var doubleTapInit = 5
+var doubleTap = doubleTapInit
+
 
 func _ready():
 	$ShadowOverlay.show()
@@ -32,10 +35,29 @@ func _ready():
 
 func _physics_process(delta):
 	
-	#print(position.y)
+
+	
+	# Also update sprite direction
+	if !isClimb:
+		if(direction < 0):
+			facing = -1
+			$AnimatedSprite2D.flip_h = true
+			$ShadowOverlay.flip_h = true
+		elif(direction > 0):
+			facing = 1
+			$AnimatedSprite2D.flip_h = false
+			$ShadowOverlay.flip_h = false
+		
+	# Get the input direction and handle the movement/deceleration.
+	if !wallJumping && !isClimb:
+		direction = Input.get_axis("game_left", "game_right")
+		if direction:
+			velocity.x = direction * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
 	
 	# Climb check
-	if Input.is_action_pressed("game_x") and is_on_wall():
+	if Input.is_action_pressed("game_x") and is_on_wall() and !wallJumping:
 		isClimb = true
 		direction = Input.get_axis("game_up", "game_down")
 		if direction:
@@ -57,6 +79,7 @@ func _physics_process(delta):
 	if is_on_floor():
 		coyoteTime = coyoteTimeInit
 		jumps = jumpsInit
+		WALL_JUMP_VELOCITY = -100
 
 	# Handle Jump.
 	if Input.is_action_just_pressed("game_z") and jumps and coyoteTime > 0:
@@ -66,11 +89,13 @@ func _physics_process(delta):
 	# Wall Jump
 	if is_on_wall() and !is_on_floor() and Input.is_action_just_pressed("game_z"):
 		wallJumping = true
+		isClimb = false
 		wallJumpTimer = wallJumpTimerInit
 		#direction *= -1
 		
 		velocity.y = WALL_JUMP_VELOCITY
-		velocity.x = -direction * SPEED
+		WALL_JUMP_VELOCITY += 10
+		velocity.x = -facing * SPEED *2
 	
 	# Reset Wall Jump
 	if wallJumping:
@@ -78,28 +103,14 @@ func _physics_process(delta):
 		if wallJumpTimer <= 0:
 			wallJumping = false
 
-	# Get the input direction and handle the movement/deceleration.
-	if !wallJumping:
-		direction = Input.get_axis("game_left", "game_right")
-		if direction:
-			velocity.x = direction * SPEED
-		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
+
 
 	move_and_slide()
 	
 	# Handling other things
 	
 	# Have Camera lead a little ahead of player's facing
-	# Also update sprite direction
-	if(direction < 0):
-		facing = -1
-		$AnimatedSprite2D.flip_h = true
-		$ShadowOverlay.flip_h = true
-	elif(direction > 0):
-		facing = 1
-		$AnimatedSprite2D.flip_h = false
-		$ShadowOverlay.flip_h = false
+
 		
 		
 	#Update Light Direction (see DynamicLight for effects)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cayhchuroll3t"]
+[gd_scene load_steps=12 format=3 uid="uid://cayhchuroll3t"]
 
 [ext_resource type="PackedScene" uid="uid://42grynypajcv" path="res://Player.tscn" id="3_iw4by"]
 [ext_resource type="Texture2D" uid="uid://duahjbo5xv3g" path="res://horror_plat_walls.png" id="4_jcspo"]
@@ -8,10 +8,6 @@
 [ext_resource type="AudioStream" uid="uid://bary4dkit7s2v" path="res://KeycardHumLoop.wav" id="6_ptu0d"]
 [ext_resource type="Script" path="res://Tutorial.gd" id="6_tftsp"]
 [ext_resource type="Script" path="res://Intro.gd" id="8_nw1bp"]
-[ext_resource type="Script" path="res://CanvasLayer.gd" id="9_iuv7a"]
-[ext_resource type="AudioStream" uid="uid://ds3tddcudbuqp" path="res://flashlight_click.mp3" id="9_y24qi"]
-[ext_resource type="AudioStream" uid="uid://cimlrav85tk0l" path="res://GB_Jam_Area_1_Rough_idea.mp3" id="11_p7b8u"]
-[ext_resource type="Script" path="res://Music.gd" id="12_kktfl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_skq5i"]
 size = Vector2(100.089, 10)
@@ -874,7 +870,11 @@ position = Vector2(0, -16)
 polygon = PackedVector2Array(552, 64, 712, 64, 712, 52, 552, 52)
 
 [node name="Player" parent="." instance=ExtResource("3_iw4by")]
-position = Vector2(208, 100)
+position = Vector2(208, 96)
+
+[node name="Intro" type="Node2D" parent="Player"]
+position = Vector2(-208, -96)
+script = ExtResource("8_nw1bp")
 
 [node name="TileMapFinal" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_s6v7n")
@@ -962,24 +962,3 @@ autoplay = true
 max_distance = 175.0
 attenuation = 2.2974
 panning_strength = 2.5
-
-[node name="Intro" type="Node2D" parent="."]
-script = ExtResource("8_nw1bp")
-
-[node name="FlashlightSound" type="AudioStreamPlayer2D" parent="Intro"]
-stream = ExtResource("9_y24qi")
-volume_db = 13.206
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-script = ExtResource("9_iuv7a")
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-offset_right = 168.0
-offset_bottom = 144.0
-color = Color(0.0901961, 0.0392157, 0.133333, 1)
-
-[node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("11_p7b8u")
-script = ExtResource("12_kktfl")
-
-[connection signal="lit" from="Intro" to="Music" method="_on_intro_lit"]

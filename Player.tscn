@@ -11,6 +11,19 @@
 [ext_resource type="Script" path="res://LabelTest.gd" id="8_whit7"]
 [ext_resource type="Texture2D" uid="uid://ht7b48hsdkn" path="res://PlayerPlaceholder.png" id="10_iu2ql"]
 
+[sub_resource type="Gradient" id="Gradient_l7204"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jhkp3"]
+gradient = SubResource("Gradient_l7204")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7xmm4"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+color_ramp = SubResource("GradientTexture1D_jhkp3")
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_tu6qu"]
 atlas = ExtResource("3_jtg14")
 region = Rect2(0, 0, 8, 8)
@@ -61,21 +74,15 @@ line_spacing = 1.0
 font = ExtResource("8_k8ceo")
 font_size = 10
 
-[sub_resource type="Gradient" id="Gradient_l7204"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_jhkp3"]
-gradient = SubResource("Gradient_l7204")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7xmm4"]
-particle_flag_disable_z = true
-gravity = Vector3(0, 0, 0)
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
-color_ramp = SubResource("GradientTexture1D_jhkp3")
-
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_xtmtc")
+
+[node name="Trail" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 12
+process_material = SubResource("ParticleProcessMaterial_7xmm4")
+texture = ExtResource("10_iu2ql")
+lifetime = 0.3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2.98023e-08, 1.5)
@@ -122,10 +129,3 @@ offset_right = 40.0
 offset_bottom = 23.0
 label_settings = SubResource("LabelSettings_cyx70")
 script = ExtResource("8_whit7")
-
-[node name="Trail" type="GPUParticles2D" parent="."]
-emitting = false
-amount = 12
-process_material = SubResource("ParticleProcessMaterial_7xmm4")
-texture = ExtResource("10_iu2ql")
-lifetime = 0.3

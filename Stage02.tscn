@@ -1,9 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://b6vyfwkihavnu"]
+[gd_scene load_steps=10 format=3 uid="uid://b6vyfwkihavnu"]
 
 [ext_resource type="Texture2D" uid="uid://bg6g5aptl3uyh" path="res://8PxTilePlaceholders.png" id="1_ms1ca"]
 [ext_resource type="PackedScene" uid="uid://42grynypajcv" path="res://Player.tscn" id="3_jwaii"]
 [ext_resource type="Texture2D" uid="uid://duahjbo5xv3g" path="res://horror_plat_walls.png" id="4_6fol6"]
-[ext_resource type="Script" path="res://Pursuer.gd" id="5_htlcn"]
+[ext_resource type="PackedScene" uid="uid://bew501rkoa1o6" path="res://Pursuer.tscn" id="5_bnj11"]
 [ext_resource type="Script" path="res://ZShadows.gd" id="5_u82gh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i64hi"]
@@ -743,8 +743,6 @@ terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_a2d2x")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0kfqq"]
-
 [node name="World" type="Node2D"]
 
 [node name="Background" type="CanvasGroup" parent="."]
@@ -785,12 +783,5 @@ format = 2
 [node name="ZShadows" type="Polygon2D" parent="."]
 script = ExtResource("5_u82gh")
 
-[node name="Pursuer" type="Area2D" parent="."]
-position = Vector2(16, 80)
-script = ExtResource("5_htlcn")
-
-[node name="CollisionCircle" type="CollisionShape2D" parent="Pursuer"]
-shape = SubResource("CircleShape2D_0kfqq")
-debug_color = Color(0, 0.6, 0.701961, 1)
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Pursuer"]
+[node name="Pursuer" parent="." instance=ExtResource("5_bnj11")]
+position = Vector2(8, 80)

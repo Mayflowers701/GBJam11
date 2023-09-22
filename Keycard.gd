@@ -17,3 +17,5 @@ func _process(delta):
 	
 	position.y += 0.15*sin(0.05*time)
 	
+	#if ($Area2D/CollisionShape2D.)
+	

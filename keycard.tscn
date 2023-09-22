@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://sj12mwfb5rxl"]
+
+[ext_resource type="Script" path="res://Keycard.gd" id="1_2y16y"]
+[ext_resource type="Texture2D" uid="uid://cj4kapg8ba5db" path="res://star.png" id="2_4he3s"]
+[ext_resource type="AudioStream" uid="uid://bary4dkit7s2v" path="res://KeycardHumLoop.wav" id="3_pwaec"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cqkd6"]
+size = Vector2(10, 10)
+
+[node name="Keycard" type="Node2D"]
+script = ExtResource("1_2y16y")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_4he3s")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_pwaec")
+autoplay = true
+max_distance = 175.0
+attenuation = 2.2974
+panning_strength = 2.5
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_cqkd6")

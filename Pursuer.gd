@@ -1,5 +1,7 @@
 extends Area2D
 
+@onready var navigation_agent = $NavigationAgent2D
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,5 +15,8 @@ func _draw():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	queue_redraw()
+	
+	# Move towards target
+	
 	
 	pass

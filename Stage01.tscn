@@ -1,11 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://cayhchuroll3t"]
+[gd_scene load_steps=14 format=3 uid="uid://cayhchuroll3t"]
 
 [ext_resource type="PackedScene" uid="uid://42grynypajcv" path="res://Player.tscn" id="3_iw4by"]
 [ext_resource type="Texture2D" uid="uid://duahjbo5xv3g" path="res://horror_plat_walls.png" id="4_jcspo"]
-[ext_resource type="Texture2D" uid="uid://cj4kapg8ba5db" path="res://star.png" id="5_2wl4b"]
 [ext_resource type="Script" path="res://ZShadows.gd" id="5_5a1qe"]
-[ext_resource type="Script" path="res://Keycard.gd" id="5_7psax"]
-[ext_resource type="AudioStream" uid="uid://bary4dkit7s2v" path="res://KeycardHumLoop.wav" id="6_ptu0d"]
+[ext_resource type="PackedScene" uid="uid://sj12mwfb5rxl" path="res://keycard.tscn" id="5_5lj7w"]
 [ext_resource type="Script" path="res://Tutorial.gd" id="6_tftsp"]
 [ext_resource type="Script" path="res://Intro.gd" id="8_nw1bp"]
 [ext_resource type="Script" path="res://CanvasLayer.gd" id="9_iuv7a"]
@@ -947,28 +945,15 @@ offset_bottom = 23.0
 [node name="Tutorial" type="CanvasLayer" parent="."]
 script = ExtResource("6_tftsp")
 
-[node name="Keycard" type="Node2D" parent="."]
-position = Vector2(468, 88)
-script = ExtResource("5_7psax")
-
-[node name="Sprite2D" type="Sprite2D" parent="Keycard"]
-position = Vector2(0, -4)
-texture = ExtResource("5_2wl4b")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Keycard"]
-stream = ExtResource("6_ptu0d")
-volume_db = -5.007
-autoplay = true
-max_distance = 175.0
-attenuation = 2.2974
-panning_strength = 2.5
+[node name="Keycard" parent="." instance=ExtResource("5_5lj7w")]
+position = Vector2(468, 84)
 
 [node name="Intro" type="Node2D" parent="."]
 script = ExtResource("8_nw1bp")
 
 [node name="FlashlightSound" type="AudioStreamPlayer2D" parent="Intro"]
 stream = ExtResource("9_y24qi")
-volume_db = 13.206
+volume_db = 20.873
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("9_iuv7a")
@@ -980,6 +965,7 @@ color = Color(0.0901961, 0.0392157, 0.133333, 1)
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_p7b8u")
+volume_db = 7.0
 script = ExtResource("12_kktfl")
 
 [connection signal="lit" from="Intro" to="Music" method="_on_intro_lit"]

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://daufp7w4twcg6"]
+
+[ext_resource type="Script" path="res://Seg.gd" id="1_2ovyu"]
+
+[node name="SegA" type="CharacterBody2D"]
+script = ExtResource("1_2ovyu")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

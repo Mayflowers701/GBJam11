@@ -16,7 +16,8 @@ func _ready():
 	call_deferred("actor_setup")
 	
 func _draw():
-	draw_circle(Vector2(0,0), 6, Color.hex(0x000000ff))
+	draw_circle(Vector2(0,0), 2, Color.hex(0x000000ff))
+	pass
 
 func actor_setup():
 	
@@ -36,7 +37,7 @@ func _physics_process(delta):
 	# Go to player
 	if player:
 		# Set speed to be faster if far away
-		movement_speed = 25.0 + 0.5*position.distance_to(player.position)
+		movement_speed = 40.0 + 0.3*position.distance_to(player.position)
 		
 		movement_target_position = player.position
 		set_movement_target(movement_target_position)

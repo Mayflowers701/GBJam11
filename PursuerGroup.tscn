@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://fakrb0gugsah"]
+
+[ext_resource type="PackedScene" uid="uid://bew501rkoa1o6" path="res://Pursuer.tscn" id="1_qr2sg"]
+[ext_resource type="PackedScene" uid="uid://daufp7w4twcg6" path="res://seg.tscn" id="2_5wxnu"]
+[ext_resource type="Script" path="res://LeftLeg.gd" id="3_ha160"]
+
+[node name="PursuerGroup" type="Node"]
+
+[node name="SegHead" parent="." instance=ExtResource("1_qr2sg")]
+
+[node name="SegA" parent="." instance=ExtResource("2_5wxnu")]
+
+[node name="SegB" parent="." instance=ExtResource("2_5wxnu")]
+nextName = "A"
+
+[node name="Legs" type="Node" parent="SegB"]
+
+[node name="LeftLeg" type="CharacterBody2D" parent="SegB/Legs"]
+script = ExtResource("3_ha160")
+
+[node name="RightLeg" type="CharacterBody2D" parent="SegB/Legs"]
+script = ExtResource("3_ha160")
+left = false
+
+[node name="SegC" parent="." instance=ExtResource("2_5wxnu")]
+nextName = "B"
+
+[node name="SegD" parent="." instance=ExtResource("2_5wxnu")]
+nextName = "C"
+
+[node name="SegE" parent="." instance=ExtResource("2_5wxnu")]
+nextName = "D"
+
+[node name="SegF" parent="." instance=ExtResource("2_5wxnu")]
+nextName = "E"
+
+[node name="SegG" parent="." instance=ExtResource("2_5wxnu")]
+nextName = "F"
+
+[node name="SegH" parent="." instance=ExtResource("2_5wxnu")]
+nextName = "G"
+
+[node name="SegI" parent="." instance=ExtResource("2_5wxnu")]
+nextName = "H"
+
+[node name="SegJ" parent="." instance=ExtResource("2_5wxnu")]
+nextName = "I"
+
+[node name="SegK" parent="." instance=ExtResource("2_5wxnu")]
+nextName = "J"
+
+[node name="SegL" parent="." instance=ExtResource("2_5wxnu")]
+nextName = "K"
+
+[node name="SegM" parent="." instance=ExtResource("2_5wxnu")]
+nextName = "L"
+
+[node name="SegB7" parent="." instance=ExtResource("2_5wxnu")]
+nextName = "A"
+
+[node name="SegA8" parent="." instance=ExtResource("2_5wxnu")]
+
+[node name="SegB8" parent="." instance=ExtResource("2_5wxnu")]
+nextName = "A"

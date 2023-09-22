@@ -30,11 +30,11 @@ var doubleTapInit = 15
 var doubleTap = 0
 
 var sprint = false
-var canSprint = true
+var canSprint = false
 
 
 func _ready():
-	#ShadowOverlay.show()
+	#$ShadowOverlay.show()
 	pass
 
 func _physics_process(delta):
@@ -77,7 +77,7 @@ func _physics_process(delta):
 		doubleTap = doubleTapInit
 		
 	if sprint && canSprint:
-		velocity.x = direction * SPEED * 1.5
+		velocity.x = direction * SPEED * 2
 		$Trail.emitting = true
 	else:
 		$Trail.emitting = false

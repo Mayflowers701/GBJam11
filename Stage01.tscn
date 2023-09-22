@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cayhchuroll3t"]
+[gd_scene load_steps=16 format=3 uid="uid://cayhchuroll3t"]
 
 [ext_resource type="PackedScene" uid="uid://42grynypajcv" path="res://Player.tscn" id="3_iw4by"]
 [ext_resource type="Texture2D" uid="uid://duahjbo5xv3g" path="res://horror_plat_walls.png" id="4_jcspo"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Intro.gd" id="8_nw1bp"]
 [ext_resource type="Script" path="res://CanvasLayer.gd" id="9_iuv7a"]
 [ext_resource type="AudioStream" uid="uid://ds3tddcudbuqp" path="res://flashlight_click.mp3" id="9_y24qi"]
+[ext_resource type="PackedScene" uid="uid://bew501rkoa1o6" path="res://Pursuer.tscn" id="11_jhige"]
 [ext_resource type="AudioStream" uid="uid://cimlrav85tk0l" path="res://GB_Jam_Area_1_Rough_idea.mp3" id="11_p7b8u"]
 [ext_resource type="Script" path="res://Music.gd" id="12_kktfl"]
 
@@ -738,6 +739,11 @@ terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_a2d2x")
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_50ch5"]
+vertices = PackedVector2Array(168, 48, 288, 48, 288, 88, 128, 96, 128, 88, 344, 88, 344, 80, 392, 80, 352, 88, 568, 88, 568, 56, 696, 56, 696, 88, 728, 88, 728, 96, 528, 96, 528, 88, 504, 96, 504, 16, 528, 8, 432, 8, 440, 16, 432, 32, 440, 24, 464, 32, 480, 24, 480, 64, 464, 56, 408, 64, 392, 56, 408, 88, 352, 96)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 7, 8), PackedInt32Array(9, 10, 11, 12), PackedInt32Array(12, 13, 14, 15), PackedInt32Array(9, 12, 15), PackedInt32Array(16, 9, 15, 17), PackedInt32Array(16, 17, 18, 19), PackedInt32Array(20, 19, 18, 21), PackedInt32Array(22, 20, 21, 23), PackedInt32Array(24, 22, 23, 25), PackedInt32Array(24, 25, 26, 27), PackedInt32Array(27, 26, 28, 29), PackedInt32Array(7, 29, 28, 30), PackedInt32Array(7, 30, 8), PackedInt32Array(5, 8, 31, 3), PackedInt32Array(2, 5, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(128, 88, 168, 48, 288, 48, 288, 88, 344, 88, 344, 80, 392, 80, 392, 56, 464, 56, 464, 32, 432, 32, 432, 8, 528, 8, 528, 88, 568, 88, 568, 56, 696, 56, 696, 88, 728, 88, 728, 96, 528, 96, 504, 96, 504, 16, 440, 16, 440, 24, 480, 24, 480, 64, 408, 64, 408, 88, 352, 88, 352, 96, 128, 96)])
+
 [node name="World" type="Node2D"]
 
 [node name="Background" type="CanvasGroup" parent="."]
@@ -967,5 +973,10 @@ color = Color(0.0901961, 0.0392157, 0.133333, 1)
 stream = ExtResource("11_p7b8u")
 volume_db = 7.0
 script = ExtResource("12_kktfl")
+
+[node name="Pursuer" parent="." instance=ExtResource("11_jhige")]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_50ch5")
 
 [connection signal="lit" from="Intro" to="Music" method="_on_intro_lit"]

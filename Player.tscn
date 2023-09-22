@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://ht7b48hsdkn" path="res://PlayerPlaceholder.png" id="10_iu2ql"]
 
 [sub_resource type="Gradient" id="Gradient_l7204"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+colors = PackedColorArray(1, 1, 1, 0.505882, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_jhkp3"]
 gradient = SubResource("Gradient_l7204")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b6vyfwkihavnu"]
+[gd_scene load_steps=11 format=3 uid="uid://b6vyfwkihavnu"]
 
 [ext_resource type="Texture2D" uid="uid://bg6g5aptl3uyh" path="res://8PxTilePlaceholders.png" id="1_ms1ca"]
 [ext_resource type="PackedScene" uid="uid://42grynypajcv" path="res://Player.tscn" id="3_jwaii"]
@@ -743,6 +743,11 @@ terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_a2d2x")
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_gt6u5"]
+vertices = PackedVector2Array(-8, 88, -8, 72, 168, 72, 152, 80, 168, 48, 112, 48, 112, 8, 184, -8, 88, 8, 88, 48, -8, 48, -8, -8, 184, 80, 152, 88)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(8, 9, 10, 11), PackedInt32Array(8, 11, 7, 6), PackedInt32Array(4, 7, 12, 2), PackedInt32Array(2, 12, 3), PackedInt32Array(0, 3, 13)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, 72, 168, 72, 168, 48, 112, 48, 112, 8, 88, 8, 88, 48, -8, 48, -8, -8, 184, -8, 184, 80, 152, 80, 152, 88, -8, 88)])
+
 [node name="World" type="Node2D"]
 
 [node name="Background" type="CanvasGroup" parent="."]
@@ -774,7 +779,7 @@ format = 2
 layer_0/tile_data = PackedInt32Array(786451, 196608, 0, 786450, 196608, 0, 786449, 196608, 0, 786448, 196608, 0, 786447, 196608, 0, 786446, 196608, 0, 786445, 196608, 0, 786444, 196608, 0, 786443, 196608, 0, 786442, 196608, 0, 786441, 196608, 0, 786440, 196608, 0, 786439, 196608, 0, 786438, 196608, 0, 786437, 196608, 0, 786436, 196608, 0, 786435, 196608, 0, 786434, 196608, 0, 786433, 196608, 0, 786432, 196608, 0, 458752, 196608, 0, 458753, 196608, 0, 458754, 196608, 0, 458755, 196608, 0, 458756, 196608, 0, 458757, 196608, 0, 458758, 196608, 0, 458759, 196608, 0, 458760, 196608, 0, 458761, 196608, 0, 458762, 196608, 0, 458763, 196608, 0, 458764, 196608, 0, 458765, 196608, 0, 458766, 196608, 0, 458767, 196608, 0, 458768, 196608, 0, 458769, 196608, 0, 458770, 196608, 0, 458771, 196608, 0, 131084, 196608, 0, 196620, 196608, 0, 262156, 196608, 0, 327692, 196608, 0, 720916, 196608, 0, 720917, 196608, 0, 720918, 196608, 0, 720919, 196608, 0, 720920, 196608, 0, 655384, 196608, 0, 589848, 196608, 0, 524312, 196608, 0, 458776, 196608, 0, 393240, 196608, 0, 327704, 196608, 0, 262168, 196608, 0, 196632, 196608, 0, 131096, 196608, 0, 65560, 196608, 0, 24, 196608, 0, 786452, 196608, 0)
 
 [node name="Player" parent="." instance=ExtResource("3_jwaii")]
-position = Vector2(80, 88)
+position = Vector2(40, 48)
 
 [node name="TileMapFinal" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_s6v7n")
@@ -785,3 +790,6 @@ script = ExtResource("5_u82gh")
 
 [node name="Pursuer" parent="." instance=ExtResource("5_bnj11")]
 position = Vector2(8, 80)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_gt6u5")

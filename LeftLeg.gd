@@ -22,12 +22,14 @@ var a
 var b
 var c
 var elbow = Vector2(0,0)
+var width = 2
 
 var facing = 1
 
 var legDir
 
 @onready var sound = $AudioStreamPlayer2D
+var soundlatch = false
 
 func _on_ready():
 
@@ -42,8 +44,8 @@ func _draw():
 	#draw_line(Vector2(0,0), get_parent().get_parent().position-position, Color.hex(0x0000ffff))
 	
 	#draw_circle(elbow, 1, Color.hex(0x00ffffff))
-	draw_line( Vector2(0,0), elbow, Color.hex(0x000000ff))
-	draw_line( get_parent().get_parent().position-position, elbow, Color.hex(0x000000ff))
+	draw_line( Vector2(0,0), elbow, Color.hex(0x000000ff), width)
+	draw_line( get_parent().get_parent().position-position, elbow, Color.hex(0x000000ff), width)
 
 	#Vector2(1,0).rotated( parentDir+ angle*rotateDir)*offset, 
 
@@ -67,9 +69,13 @@ func _physics_process(delta):
 		newPos = targetPos
 		facing = sign( position - targetPos )
 		moving = true
+		soundlatch = true
 		
 	if position.distance_to(newPos) < 2:
 		moving = false
+		if soundlatch && sound:
+			sound.play()
+			soundlatch = false
 	
 	if partner:
 		if moving:

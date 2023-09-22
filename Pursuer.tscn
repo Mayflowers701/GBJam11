@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Pursuer.gd" id="1_fj4x6"]
 [ext_resource type="Texture2D" uid="uid://bea3jole35y4v" path="res://botany_frog.png" id="2_wwo8u"]
-[ext_resource type="AudioStream" uid="uid://bary4dkit7s2v" path="res://KeycardHumLoop.wav" id="3_5ju8i"]
+[ext_resource type="AudioStream" uid="uid://bmg64flwdk3ue" path="res://GBJam11Sounds/PursuerVoiceTest.mp3" id="3_amlf6"]
 
 [node name="PursuerHead" type="CharacterBody2D"]
 script = ExtResource("1_fj4x6")
@@ -17,9 +17,8 @@ visible = false
 texture = ExtResource("2_wwo8u")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_5ju8i")
+stream = ExtResource("3_amlf6")
 volume_db = 6.059
-pitch_scale = 1.42
 autoplay = true
 max_distance = 300.0
 attenuation = 5.65685

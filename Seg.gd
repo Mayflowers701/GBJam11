@@ -20,9 +20,20 @@ func _ready():
 
 func _draw():
 	
-	draw_circle(Vector2(0,0), width, Color.hex(0x000000ff))
+	#draw_circle(Vector2(0,0), width, Color.hex(0x000000ff))
 	
 	if nextSeg:
+		#draw_line( Vector2(0,0), nextSeg.position - position, Color.hex(0x000000ff))
+		
+		var A = Vector2(1,0).rotated( direction.angle() + PI/2 ) * width 
+		var B = Vector2(1,0).rotated( direction.angle() - PI/2 ) * width 
+		var C = nextSeg.position - position + Vector2(1,0).rotated( direction.angle() - PI/2 ) * width/2
+		var D = nextSeg.position - position + Vector2(1,0).rotated( direction.angle() + PI/2 ) * width/2
+		
+		var segPoints = [A, B, C, D]
+		var segColor = [Color.hex(0x000000ff)]
+		
+		draw_polygon(segPoints, segColor)
 		draw_line( Vector2(0,0), nextSeg.position - position, Color.hex(0x000000ff))
 	
 	navigation_agent.path_desired_distance = 4.0

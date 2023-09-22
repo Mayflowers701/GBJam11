@@ -34,7 +34,7 @@ var canSprint = false
 
 
 func _ready():
-	#$ShadowOverlay.show()
+	$ShadowOverlay.show()
 	pass
 
 func _physics_process(delta):

@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@export var width = 3
+
 var movement_speed: float = 40.0
 var movement_target_position: Vector2 = Vector2(60.0,180.0)
 
@@ -16,7 +18,7 @@ func _ready():
 	call_deferred("actor_setup")
 	
 func _draw():
-	draw_circle(Vector2(0,0), 2, Color.hex(0x000000ff))
+	draw_circle(Vector2(0,0), width, Color.hex(0x000000ff))
 	pass
 
 func actor_setup():
@@ -55,3 +57,4 @@ func _physics_process(delta):
 
 	velocity = new_velocity
 	move_and_slide()
+	

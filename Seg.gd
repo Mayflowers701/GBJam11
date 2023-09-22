@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@export var width = 2
 @export var nextName = "Head"
 var nextSeg
 var movement_speed = 0
@@ -18,7 +19,11 @@ func _ready():
 
 
 func _draw():
-	draw_circle(Vector2(0,0), 2, Color.hex(0xffffffff))
+	
+	draw_circle(Vector2(0,0), width, Color.hex(0x000000ff))
+	
+	if nextSeg:
+		draw_line( Vector2(0,0), nextSeg.position - position, Color.hex(0x000000ff))
 	
 	navigation_agent.path_desired_distance = 4.0
 	navigation_agent.target_desired_distance = 4.0

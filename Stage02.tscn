@@ -744,9 +744,9 @@ terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_a2d2x")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_t25o4"]
-vertices = PackedVector2Array(-8, 48, -8, -8, 184, 32, 168, 48, 464, 32, 464, 48, 184, 48, 184, 80, 168, 72, 152, 80, -8, 72, -8, 88, 152, 88)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(2, 4, 5, 6), PackedInt32Array(3, 2, 6), PackedInt32Array(3, 6, 7, 8), PackedInt32Array(8, 7, 9, 10), PackedInt32Array(11, 10, 9, 12)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 184, 32, 464, 32, 464, 48, 184, 48, 184, 80, 152, 80, 152, 88, -8, 88, -8, 72, 168, 72, 168, 48, -8, 48)])
+vertices = PackedVector2Array(184, 32, 464, 32, 464, 48, 184, 48, 152, 80, 152, 88, -8, 88, -8, 72, 168, 72, 184, 80, 168, 48, 112, 48, 112, 8, 184, -8, 88, 8, 88, 48, -8, 48, -8, -8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(4, 7, 8, 9), PackedInt32Array(3, 9, 8, 10), PackedInt32Array(0, 3, 10), PackedInt32Array(10, 11, 12, 13, 0), PackedInt32Array(14, 15, 16, 17), PackedInt32Array(14, 17, 13, 12)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 184, -8, 184, 32, 464, 32, 464, 48, 184, 48, 184, 80, 152, 80, 152, 88, -8, 88, -8, 72, 168, 72, 168, 48, 112, 48, 112, 8, 88, 8, 88, 48, -8, 48)])
 
 [node name="World" type="Node2D"]
 

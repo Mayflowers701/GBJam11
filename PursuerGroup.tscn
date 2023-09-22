@@ -7,34 +7,53 @@
 [node name="PursuerGroup" type="Node"]
 
 [node name="SegHead" parent="." instance=ExtResource("1_qr2sg")]
+width = 5
 
 [node name="SegA" parent="." instance=ExtResource("2_5wxnu")]
+width = 5
 
-[node name="SegB" parent="." instance=ExtResource("2_5wxnu")]
-nextName = "A"
+[node name="Legs" type="Node" parent="SegA"]
 
-[node name="Legs" type="Node" parent="SegB"]
-
-[node name="LeftLeg" type="CharacterBody2D" parent="SegB/Legs"]
+[node name="LeftLeg" type="CharacterBody2D" parent="SegA/Legs"]
 script = ExtResource("3_ha160")
 
-[node name="RightLeg" type="CharacterBody2D" parent="SegB/Legs"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SegA/Legs/LeftLeg"]
+
+[node name="RightLeg" type="CharacterBody2D" parent="SegA/Legs"]
 script = ExtResource("3_ha160")
 left = false
 
+[node name="SegB" parent="." instance=ExtResource("2_5wxnu")]
+width = 6
+nextName = "A"
+
 [node name="SegC" parent="." instance=ExtResource("2_5wxnu")]
+width = 5
 nextName = "B"
 
 [node name="SegD" parent="." instance=ExtResource("2_5wxnu")]
+width = 4
 nextName = "C"
 
 [node name="SegE" parent="." instance=ExtResource("2_5wxnu")]
+width = 4
 nextName = "D"
 
+[node name="Legs" type="Node" parent="SegE"]
+
+[node name="LeftLeg" type="CharacterBody2D" parent="SegE/Legs"]
+script = ExtResource("3_ha160")
+
+[node name="RightLeg" type="CharacterBody2D" parent="SegE/Legs"]
+script = ExtResource("3_ha160")
+left = false
+
 [node name="SegF" parent="." instance=ExtResource("2_5wxnu")]
+width = 3
 nextName = "E"
 
 [node name="SegG" parent="." instance=ExtResource("2_5wxnu")]
+width = 3
 nextName = "F"
 
 [node name="SegH" parent="." instance=ExtResource("2_5wxnu")]

@@ -1,46 +1,41 @@
-[gd_scene load_steps=16 format=3 uid="uid://42grynypajcv"]
+[gd_scene load_steps=20 format=3 uid="uid://42grynypajcv"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_xtmtc"]
-[ext_resource type="Texture2D" uid="uid://b6aueh7gbyeni" path="res://PlayerAnimated.png" id="2_mnptx"]
 [ext_resource type="Script" path="res://GameCamera.gd" id="3_ouqkk"]
 [ext_resource type="Script" path="res://DynamicLight.gd" id="4_jombq"]
 [ext_resource type="Texture2D" uid="uid://57rao52pmhbc" path="res://ShadowMap.png" id="4_ytouy"]
+[ext_resource type="Script" path="res://DynamicLightZ.gd" id="6_2gnub"]
+[ext_resource type="Script" path="res://ShadowOverlay.gd" id="6_t8d8d"]
+[ext_resource type="FontFile" uid="uid://cose7w0j0swd8" path="res://Pixolletta8px.ttf" id="8_k8ceo"]
+[ext_resource type="Script" path="res://LabelTest.gd" id="8_whit7"]
+[ext_resource type="Texture2D" uid="uid://ht7b48hsdkn" path="res://PlayerPlaceholder.png" id="10_iu2ql"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wjxf3"]
-atlas = ExtResource("2_mnptx")
+[sub_resource type="Gradient" id="Gradient_l7204"]
+colors = PackedColorArray(1, 1, 1, 0.505882, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jhkp3"]
+gradient = SubResource("Gradient_l7204")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7xmm4"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+color_ramp = SubResource("GradientTexture1D_jhkp3")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0atda"]
+atlas = ExtResource("10_iu2ql")
 region = Rect2(0, 0, 10, 10)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jkmfd"]
-atlas = ExtResource("2_mnptx")
-region = Rect2(10, 0, 10, 10)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_21767"]
-atlas = ExtResource("2_mnptx")
-region = Rect2(20, 0, 10, 10)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wnhje"]
-atlas = ExtResource("2_mnptx")
-region = Rect2(0, 10, 10, 10)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_g3hck"]
-atlas = ExtResource("2_mnptx")
-region = Rect2(10, 10, 10, 10)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pp1fm"]
-atlas = ExtResource("2_mnptx")
-region = Rect2(20, 10, 10, 10)
+[sub_resource type="AtlasTexture" id="AtlasTexture_aabpy"]
+atlas = ExtResource("10_iu2ql")
+region = Rect2(0, 0, 10, 10)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ldnwd"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wjxf3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jkmfd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_21767")
+"texture": SubResource("AtlasTexture_0atda")
 }],
 "loop": true,
 "name": &"look",
@@ -48,16 +43,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wnhje")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_g3hck")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pp1fm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_g3hck")
+"texture": SubResource("AtlasTexture_aabpy")
 }],
 "loop": true,
 "name": &"walk",
@@ -82,16 +68,30 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="LabelSettings" id="LabelSettings_cyx70"]
+line_spacing = 1.0
+font = ExtResource("8_k8ceo")
+font_size = 10
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_xtmtc")
 
+[node name="Trail" type="GPUParticles2D" parent="."]
+visible = false
+position = Vector2(0, -1)
+emitting = false
+amount = 12
+process_material = SubResource("ParticleProcessMaterial_7xmm4")
+texture = ExtResource("10_iu2ql")
+lifetime = 0.3
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_ldnwd")
 animation = &"walk"
-frame_progress = 0.217726
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1.5)
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_kmfub")
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
@@ -100,12 +100,8 @@ current = true
 [node name="GameCamera" type="Camera2D" parent="."]
 limit_left = 0
 limit_top = 0
-limit_bottom = 144
 position_smoothing_speed = 2.0
 script = ExtResource("3_ouqkk")
-
-[node name="ShadowOverlay" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_032y8")
 
 [node name="DynamicLight" type="Control" parent="."]
 layout_mode = 3
@@ -113,3 +109,22 @@ anchors_preset = 0
 offset_right = 3.0
 offset_bottom = 3.0
 script = ExtResource("4_jombq")
+
+[node name="ShadowOverlay" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_032y8")
+script = ExtResource("6_t8d8d")
+
+[node name="DynamicLightZ" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 3.0
+offset_bottom = 3.0
+script = ExtResource("6_2gnub")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_cyx70")
+script = ExtResource("8_whit7")

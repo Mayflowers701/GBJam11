@@ -1,0 +1,108 @@
+[gd_scene load_steps=8 format=3 uid="uid://fakrb0gugsah"]
+
+[ext_resource type="PackedScene" uid="uid://bew501rkoa1o6" path="res://Pursuer.tscn" id="1_qr2sg"]
+[ext_resource type="PackedScene" uid="uid://daufp7w4twcg6" path="res://seg.tscn" id="2_5wxnu"]
+[ext_resource type="Script" path="res://LeftLeg.gd" id="3_ha160"]
+[ext_resource type="AudioStream" uid="uid://duunandk86lte" path="res://GBJam11Sounds/PursuerFootstep01.mp3" id="4_xu0ky"]
+[ext_resource type="AudioStream" uid="uid://d3kbta0vfv7w0" path="res://GBJam11Sounds/PursuerFootstep02.mp3" id="5_1rufc"]
+[ext_resource type="AudioStream" uid="uid://blbfc87kni03t" path="res://GBJam11Sounds/PursuerFootstep03.mp3" id="6_3j77i"]
+[ext_resource type="AudioStream" uid="uid://brqkpp7a7um0y" path="res://GBJam11Sounds/PursuerFootstep04.mp3" id="7_6ql8p"]
+
+[node name="PursuerGroup" type="Node"]
+
+[node name="SegHead" parent="." instance=ExtResource("1_qr2sg")]
+
+[node name="SegA" parent="." instance=ExtResource("2_5wxnu")]
+width = 5
+
+[node name="Legs" type="Node" parent="SegA"]
+
+[node name="LeftLeg" type="CharacterBody2D" parent="SegA/Legs"]
+script = ExtResource("3_ha160")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SegA/Legs/LeftLeg"]
+stream = ExtResource("4_xu0ky")
+pitch_scale = 0.81
+max_distance = 400.0
+attenuation = 4.43828
+
+[node name="RightLeg" type="CharacterBody2D" parent="SegA/Legs"]
+script = ExtResource("3_ha160")
+left = false
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SegA/Legs/RightLeg"]
+stream = ExtResource("5_1rufc")
+pitch_scale = 0.81
+max_distance = 400.0
+attenuation = 5.09824
+
+[node name="SegB" parent="." instance=ExtResource("2_5wxnu")]
+width = 6
+nextName = "A"
+
+[node name="SegC" parent="." instance=ExtResource("2_5wxnu")]
+width = 5
+nextName = "B"
+
+[node name="SegD" parent="." instance=ExtResource("2_5wxnu")]
+width = 4
+nextName = "C"
+
+[node name="SegE" parent="." instance=ExtResource("2_5wxnu")]
+width = 4
+nextName = "D"
+
+[node name="Legs" type="Node" parent="SegE"]
+
+[node name="LeftLeg" type="CharacterBody2D" parent="SegE/Legs"]
+script = ExtResource("3_ha160")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SegE/Legs/LeftLeg"]
+stream = ExtResource("6_3j77i")
+pitch_scale = 0.81
+max_distance = 400.0
+attenuation = 4.92457
+
+[node name="RightLeg" type="CharacterBody2D" parent="SegE/Legs"]
+script = ExtResource("3_ha160")
+left = false
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SegE/Legs/RightLeg"]
+stream = ExtResource("7_6ql8p")
+pitch_scale = 0.81
+max_distance = 400.0
+attenuation = 5.09824
+
+[node name="SegF" parent="." instance=ExtResource("2_5wxnu")]
+width = 3
+nextName = "E"
+
+[node name="SegG" parent="." instance=ExtResource("2_5wxnu")]
+width = 3
+nextName = "F"
+
+[node name="SegH" parent="." instance=ExtResource("2_5wxnu")]
+nextName = "G"
+
+[node name="SegI" parent="." instance=ExtResource("2_5wxnu")]
+nextName = "H"
+
+[node name="SegJ" parent="." instance=ExtResource("2_5wxnu")]
+nextName = "I"
+
+[node name="SegK" parent="." instance=ExtResource("2_5wxnu")]
+nextName = "J"
+
+[node name="SegL" parent="." instance=ExtResource("2_5wxnu")]
+nextName = "K"
+
+[node name="SegM" parent="." instance=ExtResource("2_5wxnu")]
+nextName = "L"
+
+[node name="SegB7" parent="." instance=ExtResource("2_5wxnu")]
+nextName = "A"
+
+[node name="SegA8" parent="." instance=ExtResource("2_5wxnu")]
+
+[node name="SegB8" parent="." instance=ExtResource("2_5wxnu")]
+nextName = "A"

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bew501rkoa1o6"]
+
+[ext_resource type="Script" path="res://Pursuer.gd" id="1_fj4x6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0kfqq"]
+
+[node name="Pursuer" type="CharacterBody2D"]
+script = ExtResource("1_fj4x6")
+
+[node name="CollisionCircle" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0kfqq")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

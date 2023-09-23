@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bew501rkoa1o6"]
+
+[ext_resource type="Script" path="res://Pursuer.gd" id="1_fj4x6"]
+[ext_resource type="Texture2D" uid="uid://bea3jole35y4v" path="res://botany_frog.png" id="2_wwo8u"]
+[ext_resource type="AudioStream" uid="uid://bmg64flwdk3ue" path="res://GBJam11Sounds/PursuerVoiceTest.mp3" id="3_amlf6"]
+
+[node name="PursuerHead" type="CharacterBody2D"]
+script = ExtResource("1_fj4x6")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_max_distance = 1e+10
+avoidance_enabled = true
+radius = 16.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_wwo8u")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_amlf6")
+volume_db = 6.059
+max_distance = 300.0
+attenuation = 3.4822
+panning_strength = 2.75

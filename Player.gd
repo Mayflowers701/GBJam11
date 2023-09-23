@@ -30,7 +30,7 @@ var doubleTapInit = 15
 var doubleTap = 0
 
 var sprint = false
-var canSprint = false
+var canSprint = true
 
 
 func _ready():

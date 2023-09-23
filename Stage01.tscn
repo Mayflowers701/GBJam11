@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cayhchuroll3t"]
+[gd_scene load_steps=15 format=3 uid="uid://cayhchuroll3t"]
 
 [ext_resource type="PackedScene" uid="uid://42grynypajcv" path="res://Player.tscn" id="3_iw4by"]
 [ext_resource type="Texture2D" uid="uid://duahjbo5xv3g" path="res://horror_plat_walls.png" id="4_jcspo"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://CanvasLayer.gd" id="9_iuv7a"]
 [ext_resource type="AudioStream" uid="uid://ds3tddcudbuqp" path="res://flashlight_click.mp3" id="9_y24qi"]
 [ext_resource type="AudioStream" uid="uid://cimlrav85tk0l" path="res://GB_Jam_Area_1_Rough_idea.mp3" id="11_p7b8u"]
-[ext_resource type="PackedScene" uid="uid://fakrb0gugsah" path="res://PursuerGroup.tscn" id="11_u64su"]
 [ext_resource type="Script" path="res://Music.gd" id="12_kktfl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_skq5i"]
@@ -973,8 +972,6 @@ color = Color(0.0901961, 0.0392157, 0.133333, 1)
 stream = ExtResource("11_p7b8u")
 volume_db = 7.0
 script = ExtResource("12_kktfl")
-
-[node name="PursuerGroup" parent="." instance=ExtResource("11_u64su")]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_50ch5")

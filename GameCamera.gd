@@ -11,5 +11,6 @@ func _ready():
 func _process(delta):
 	
 	position.x = lerp(position.x, float(get_parent().facing * 40), 0.05)
+	#position.y = get_parent().position.y
 	
 	#pass

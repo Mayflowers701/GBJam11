@@ -5,7 +5,7 @@ var playerFacing
 var screen_points
 var parentPos
 var shadowPoints
-var shadowColor = [Color.hex(0x170a22ff)]
+var shadowColor = [Color.hex(0x000000ff)]
 var lightWidth = 200
 var lightDirection = 0.0
 

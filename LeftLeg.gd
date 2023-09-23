@@ -39,13 +39,13 @@ func _on_ready():
 	pass
 
 func _draw():
-	draw_circle(Vector2(0,0), 2, Color.hex(0x000000ff))
+	draw_circle(Vector2(0,0), 2, Color.hex(0x252525ff))
 	
 	#draw_line(Vector2(0,0), get_parent().get_parent().position-position, Color.hex(0x0000ffff))
 	
 	#draw_circle(elbow, 1, Color.hex(0x00ffffff))
-	draw_line( Vector2(0,0), elbow, Color.hex(0x000000ff), width)
-	draw_line( get_parent().get_parent().position-position, elbow, Color.hex(0x000000ff), width)
+	draw_line( Vector2(0,0), elbow, Color.hex(0x252525ff), width)
+	draw_line( get_parent().get_parent().position-position, elbow, Color.hex(0x252525ff), width)
 
 	#Vector2(1,0).rotated( parentDir+ angle*rotateDir)*offset, 
 

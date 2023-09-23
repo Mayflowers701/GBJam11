@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+@export var sleep = true
+var wait = 600
+
 @export var width = 8
 
 var movement_speed: float = 40.0
@@ -38,7 +41,7 @@ func _draw():
 	var polyC = [A,B,E]
 	var polyD = [A,B,F]
 	
-	var colors = [Color.hex(0x000000ff)]
+	var colors = [Color.hex(0x252525ff)]
 	
 	draw_polygon(polyA, colors)
 	#draw_polygon(polyB, colors)
@@ -59,6 +62,13 @@ func set_movement_target(movement_target: Vector2):
 
 func _physics_process(delta):
 	
+	if sleep:
+		wait -= 1
+		if wait <= 0:
+			#sleep = false
+			pass
+		
+		return
 	
 	
 	# Go to player

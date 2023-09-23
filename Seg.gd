@@ -31,10 +31,10 @@ func _draw():
 		var D = nextSeg.position - position + Vector2(1,0).rotated( direction.angle() + PI/2 ) * width/2
 		
 		var segPoints = [A, B, C, D]
-		var segColor = [Color.hex(0x000000ff)]
+		var segColor = [Color.hex(0x252525ff)]
 		
 		draw_polygon(segPoints, segColor)
-		draw_line( Vector2(0,0), nextSeg.position - position, Color.hex(0x000000ff))
+		draw_line( Vector2(0,0), nextSeg.position - position, Color.hex(0x252525ff))
 	
 	navigation_agent.path_desired_distance = 4.0
 	navigation_agent.target_desired_distance = 4.0

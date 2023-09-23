@@ -5,7 +5,7 @@ var playerFacing
 var screen_points
 var parentPos
 var shadowPoints
-var shadowColor = [Color.hex(0x000000ff)]
+var shadowColor = [Color.hex(0x252525ff)]
 var lightWidth = 200
 var lightDirection = 0.0
 
@@ -80,7 +80,7 @@ func _draw():
 					else:
 						break
 						
-					var projectDistance = 1600
+					var projectDistance = 160000
 					
 					# Get x proportion from player compared to edge of screen
 					var ratio = projectDistance / (point.x - get_parent().position.x + colPosX)

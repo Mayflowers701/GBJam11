@@ -11,8 +11,6 @@
 [node name="PursuerGroup" type="Node"]
 
 [node name="SegHead" parent="." instance=ExtResource("1_qr2sg")]
-sleep = true
-width = 8
 
 [node name="SegA" parent="." instance=ExtResource("2_5wxnu")]
 width = 5

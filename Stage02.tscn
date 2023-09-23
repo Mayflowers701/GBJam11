@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://duahjbo5xv3g" path="res://horror_plat_walls.png" id="4_6fol6"]
 [ext_resource type="PackedScene" uid="uid://fakrb0gugsah" path="res://PursuerGroup.tscn" id="5_k58fe"]
 [ext_resource type="Script" path="res://ZShadows.gd" id="5_u82gh"]
-[ext_resource type="Texture2D" uid="uid://blxm3pimett58" path="res://ColorPalettes/botany.png" id="7_002wr"]
 [ext_resource type="Shader" path="res://ColorPalWhite.gdshader" id="7_3xogm"]
+[ext_resource type="Texture2D" uid="uid://dunvf12t5vcd" path="res://ColorPalettes/greyscale.png" id="7_ykd0x"]
 [ext_resource type="Script" path="res://ColorMap.gd" id="9_olh3h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i64hi"]
@@ -1501,7 +1501,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(160, 32, 560, 32, 560, 
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uosbf"]
 shader = ExtResource("7_3xogm")
-shader_parameter/color_texture = ExtResource("7_002wr")
+shader_parameter/color_texture = ExtResource("7_ykd0x")
 
 [node name="World" type="Node2D"]
 
@@ -1512,7 +1512,7 @@ offset_left = 160.0
 offset_top = -16.0
 offset_right = 784.0
 offset_bottom = 288.0
-color = Color(0.541176, 0.541176, 0.541176, 1)
+color = Color(0.286275, 0.286275, 0.286275, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]

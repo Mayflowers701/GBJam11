@@ -11,6 +11,8 @@ var direction = 1;
 var facing = 1;
 var lightSpeed = 0.2
 
+var keys = [] # Obtained keys
+
 func _ready():
 	#$ShadowOverlay.hide()
 	pass

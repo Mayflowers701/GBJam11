@@ -1,0 +1,81 @@
+[gd_scene load_steps=9 format=3 uid="uid://bbuoampvgl1gl"]
+
+[ext_resource type="PackedScene" uid="uid://42grynypajcv" path="res://Player.tscn" id="1_6jj0x"]
+[ext_resource type="PackedScene" uid="uid://ddfdgpggvlwde" path="res://Key.tscn" id="2_kv36x"]
+[ext_resource type="PackedScene" uid="uid://bva27dnud6rvc" path="res://Door.tscn" id="3_oc7ne"]
+[ext_resource type="Texture2D" uid="uid://ctav1n5msmyay" path="res://test-door2.png" id="4_8je67"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iekdr"]
+size = Vector2(232, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nhjb4"]
+size = Vector2(32, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_15qld"]
+size = Vector2(8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ujvv8"]
+size = Vector2(8, 40)
+
+[node name="World" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_6jj0x")]
+position = Vector2(8, 88)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(116, 104)
+shape = SubResource("RectangleShape2D_iekdr")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(64, 76)
+shape = SubResource("RectangleShape2D_nhjb4")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(44, 84)
+shape = SubResource("RectangleShape2D_15qld")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(116, 68)
+shape = SubResource("RectangleShape2D_ujvv8")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(40, 80)
+
+[node name="Panel2" type="Panel" parent="Node2D"]
+offset_left = 8.0
+offset_top = -8.0
+offset_right = 40.0
+
+[node name="Panel3" type="Panel" parent="Node2D"]
+offset_left = -40.0
+offset_top = 16.0
+offset_right = 192.0
+offset_bottom = 32.0
+
+[node name="Panel" type="Panel" parent="Node2D"]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 112.0
+offset_top = 48.0
+offset_right = 120.0
+offset_bottom = 88.0
+
+[node name="Keys" type="Node2D" parent="."]
+
+[node name="A" parent="Keys" instance=ExtResource("2_kv36x")]
+position = Vector2(64, 64)
+
+[node name="Doors" type="Node2D" parent="."]
+
+[node name="A" parent="Doors" instance=ExtResource("3_oc7ne")]
+position = Vector2(116, 92)
+
+[node name="B" parent="Doors" instance=ExtResource("3_oc7ne")]
+position = Vector2(44, 92)
+
+[node name="Sprite2D" type="Sprite2D" parent="Doors/B"]
+texture = ExtResource("4_8je67")

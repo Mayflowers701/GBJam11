@@ -105,6 +105,7 @@ position_smoothing_speed = 2.0
 script = ExtResource("3_ouqkk")
 
 [node name="ShadowOverlay" type="AnimatedSprite2D" parent="."]
+visible = false
 sprite_frames = SubResource("SpriteFrames_032y8")
 
 [node name="DynamicLight" type="Control" parent="."]

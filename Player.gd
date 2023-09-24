@@ -28,7 +28,7 @@ var wallJumping = false
 var wallJumpTimerInit = 7
 var wallJumpTimer = 0
 
-var jumpsInit = 1
+var jumpsInit = 2
 var jumps = jumpsInit
 
 var coyoteTimeInit = 10
@@ -130,7 +130,7 @@ func _physics_process(delta):
 		
 
 	# Coyote Time
-	if coyoteTime && !is_on_floor():
+	if coyoteTime && !is_on_floor() && jumps <= 0:
 		coyoteTime-=1
 	if is_on_floor():
 		coyoteTime = coyoteTimeInit

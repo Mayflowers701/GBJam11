@@ -122,8 +122,6 @@ current = true
 [node name="GameCamera" type="Camera2D" parent="."]
 limit_left = 0
 limit_top = 0
-limit_right = 864
-limit_bottom = 144
 position_smoothing_speed = 2.0
 script = ExtResource("3_ouqkk")
 

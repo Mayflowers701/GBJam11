@@ -1,8 +1,10 @@
 extends Area2D
 
+@export var target = load("res://Stage02.tscn")
+
 
 func _on_stage_exit__botany_body_entered(body):
-	get_tree().change_scene_to_file("res://Stage02.tscn")
+	get_tree().change_scene_to_file(target)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -24,5 +24,13 @@ func play_music():
 	
 	t.queue_free()
 	
-	
 
+func _process(_delta):
+	
+	#print(get_node("/root/World/NameTag").nameTag )
+	
+	if get_tree().get_current_scene().get_name() == "Stage03":
+		$MusicPlayer.stream = mus_eerie
+		$MusicPlayer.play()
+	
+	

@@ -153,4 +153,5 @@ label_settings = SubResource("LabelSettings_cyx70")
 script = ExtResource("8_whit7")
 
 [node name="Footsteps" type="AudioStreamPlayer" parent="."]
+volume_db = -6.334
 script = ExtResource("11_rumjr")

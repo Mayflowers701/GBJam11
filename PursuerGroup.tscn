@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://fakrb0gugsah"]
+[gd_scene load_steps=9 format=3 uid="uid://fakrb0gugsah"]
 
+[ext_resource type="Script" path="res://PursuerGroup.gd" id="1_o3lxc"]
 [ext_resource type="PackedScene" uid="uid://bew501rkoa1o6" path="res://Pursuer.tscn" id="1_qr2sg"]
 [ext_resource type="PackedScene" uid="uid://daufp7w4twcg6" path="res://seg.tscn" id="2_5wxnu"]
 [ext_resource type="Script" path="res://LeftLeg.gd" id="3_ha160"]
@@ -9,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://brqkpp7a7um0y" path="res://GBJam11Sounds/PursuerFootstep04.mp3" id="7_6ql8p"]
 
 [node name="PursuerGroup" type="Node"]
+script = ExtResource("1_o3lxc")
 
 [node name="SegHead" parent="." instance=ExtResource("1_qr2sg")]
 
@@ -22,6 +24,7 @@ script = ExtResource("3_ha160")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SegA/Legs/LeftLeg"]
 stream = ExtResource("4_xu0ky")
+volume_db = 4.0
 pitch_scale = 0.81
 max_distance = 400.0
 attenuation = 4.43828
@@ -32,6 +35,7 @@ left = false
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SegA/Legs/RightLeg"]
 stream = ExtResource("5_1rufc")
+volume_db = 3.089
 pitch_scale = 0.81
 max_distance = 400.0
 attenuation = 5.09824
@@ -59,6 +63,7 @@ script = ExtResource("3_ha160")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SegE/Legs/LeftLeg"]
 stream = ExtResource("6_3j77i")
+volume_db = 4.333
 pitch_scale = 0.81
 max_distance = 400.0
 attenuation = 4.92457
@@ -69,6 +74,7 @@ left = false
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SegE/Legs/RightLeg"]
 stream = ExtResource("7_6ql8p")
+volume_db = 5.333
 pitch_scale = 0.81
 max_distance = 400.0
 attenuation = 5.09824

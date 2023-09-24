@@ -1,10 +1,6 @@
-extends Area2D
+extends Node
 
-@export var target = "res://Stage02.tscn"
-
-
-func _on_stage_exit__botany_body_entered(body):
-	get_tree().change_scene_to_file(target)
+@onready var sleep = $SegHead.sleep
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,3 +10,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+
+func _on_area_2d_body_entered(body):
+	
+	if body is Player:
+		$SegHead.sleep = false
+	
+	pass # Replace with function body.

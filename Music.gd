@@ -13,5 +13,5 @@ func _process(delta):
 
 
 func _on_intro_lit():
-	play()
+	#play()
 	

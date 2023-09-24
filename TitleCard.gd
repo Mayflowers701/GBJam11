@@ -4,6 +4,10 @@ var timer = 180
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
+	# Begin intro music
+	MusicController.play_music()
+	
 	pass # Replace with function body.
 
 

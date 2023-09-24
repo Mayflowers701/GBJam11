@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var sleep = true
-var wait = 600
+var wait = 6
 
 @export var width = 8
 
@@ -65,7 +65,7 @@ func _physics_process(delta):
 	if sleep:
 		wait -= 1
 		if wait <= 0:
-			#sleep = false
+			sleep = false
 			pass
 		
 		return
@@ -99,7 +99,7 @@ func _physics_process(delta):
 			mouthTurn = lerp( mouthTurn, PI/6, 0.2)
 			
 			if soundlatch:
-				$AudioStreamPlayer2D.play()
+				#$AudioStreamPlayer2D.play()
 				soundlatch = false
 				
 		else:

@@ -14,7 +14,7 @@ func _ready():
 	
 
 func _draw():
-	draw_arc(Vector2(0,0), 80 + pow(time, 0.5), 1.0, 1+TAU, 50, Color.hex(0x170a22ff), 160.0, false)
+	draw_arc(Vector2(0,0), 80 + pow(time, 0.5), 1.0, 1+TAU, 50, Color.hex(0x252525ff), 160.0, false)
 	#draw_arc()
 	
 	pass

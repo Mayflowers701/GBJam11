@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name Player
+
 # Player Properties
 const SPEED = 60.0
 const JUMP_VELOCITY = -120.0
@@ -8,13 +10,19 @@ const WALL_JUMP_VELOCITY = -100.0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 400#ProjectSettings.get_setting("physics/2d/default_gravity")
 
-var direction = 1;
+var direction = -1;
 var vDir = 0;
 var facing = 1;
 var lightSpeed = 0.2
 
 var isClimb = false
 var climbSpeed = 40
+
+var isWalk = false
+var isFalling = false
+var isSprint = false
+
+var walkingAnim = false
 
 var wallJumping = false
 var wallJumpTimerInit = 7
@@ -32,14 +40,21 @@ var doubleTap = 0
 var sprint = false
 var canSprint = true
 
+var climbSaveInit = 2
+var climbSave = climbSaveInit
+
+var stepTimerInit = 20
+var stepTimer = stepTimerInit
 
 func _ready():
 	$ShadowOverlay.show()
+	
 	pass
 
 func _physics_process(delta):
 	
-
+	if isClimb:
+		isWalk = false
 	
 	# Also update sprite direction
 	if !isClimb:
@@ -47,17 +62,24 @@ func _physics_process(delta):
 			facing = -1
 			$AnimatedSprite2D.flip_h = true
 			$ShadowOverlay.flip_h = true
+			#$Trail.flip_h = true
 		elif(direction > 0):
 			facing = 1
 			$AnimatedSprite2D.flip_h = false
 			$ShadowOverlay.flip_h = false
+			#$Trail.flip_h = false
+			
+	$Trail.position.x = -facing *2
 		
 	# Get the input direction and handle the movement/deceleration.
 	if !wallJumping && !isClimb:
 		direction = Input.get_axis("game_left", "game_right")
 		if direction:
+			if !isClimb:
+				isWalk = true
 			velocity.x = direction * SPEED
 		else:
+			isWalk = false
 			sprint = false
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			
@@ -87,6 +109,7 @@ func _physics_process(delta):
 	
 	# Climb check
 	if Input.is_action_pressed("game_x") and is_on_wall() and !wallJumping:
+		climbSave = climbSaveInit
 		isClimb = true
 		sprint = false
 		vDir = Input.get_axis("game_up", "game_down")
@@ -95,7 +118,10 @@ func _physics_process(delta):
 		else:
 			velocity.y = move_toward(velocity.y, 0, climbSpeed)
 	else:
-		isClimb = false
+		climbSave -= 1
+		if climbSave <= 0:
+			isClimb = false
+			climbSave = climbSaveInit
 	
 	
 	# Add the gravity.
@@ -147,17 +173,48 @@ func _physics_process(delta):
 	#Update Light Direction (see DynamicLight for effects)
 	if(Input.is_action_pressed("game_up")):
 		$ShadowOverlay.rotation = lerp($ShadowOverlay.rotation, 0.785398*-sign(facing), lightSpeed)
-		$AnimatedSprite2D.animation = "look"
-		$AnimatedSprite2D.frame = 1
+		if !isWalk:
+			$AnimatedSprite2D.animation = "look"
+			$AnimatedSprite2D.frame = 1
 	elif(Input.is_action_pressed("game_down")):
 		$ShadowOverlay.rotation = lerp($ShadowOverlay.rotation, 0.785398*sign(facing), lightSpeed)
-		$AnimatedSprite2D.animation = "look"
-		$AnimatedSprite2D.frame = 2
+		if !isWalk:
+			$AnimatedSprite2D.animation = "look"
+			$AnimatedSprite2D.frame = 2
 	else:
 		$ShadowOverlay.rotation = lerp($ShadowOverlay.rotation, 0.0, lightSpeed)
+		if !isWalk:
+			$AnimatedSprite2D.frame = 0
+	
+	if isWalk:
+		if !walkingAnim:
+			$AnimatedSprite2D.animation = "walk"
+			#print("walk")
+			$AnimatedSprite2D.play()
+			walkingAnim = true
+	else:
+		$AnimatedSprite2D.animation = "look"
+		walkingAnim = false
+		
+	if !is_on_floor() && !isClimb:
+		isFalling = true
+	else:
+		isFalling = false
+		
+	if isFalling:
+		$AnimatedSprite2D.animation = "walk"
 		$AnimatedSprite2D.frame = 0
+		
+
+	if stepTimer > 0:
+		stepTimer -= 1
+	elif isWalk && !isFalling:
+		stepTimer = stepTimerInit
+		$Footsteps.play_sound()
 	
-	if direction:
-		#$AnimatedSprite2D.animation = "walk"
-		pass
-	
+
+
+
+func _on_stage_exit__botany_body_entered(body):
+	if body is Player:
+		get_tree().change_scene_to_file("res://Stage02.tscn")

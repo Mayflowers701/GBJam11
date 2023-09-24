@@ -10,7 +10,7 @@ const WALL_JUMP_VELOCITY = -100.0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 400#ProjectSettings.get_setting("physics/2d/default_gravity")
 
-var direction = -1;
+@export var direction = -1;
 var vDir = 0;
 var facing = 1;
 var lightSpeed = 0.2

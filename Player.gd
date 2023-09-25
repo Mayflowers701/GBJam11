@@ -245,5 +245,24 @@ func _physics_process(delta):
 
 func _on_stage_exit__botany_body_entered(body):
 	if body is Player:
-		get_tree().change_scene_to_file("res://Stage02.tscn")
+		
+		if PlayerSingleton.stage == 1:
+			get_tree().change_scene_to_file("res://Stage02.tscn")
+			PlayerSingleton.stage += 1
+			
+		elif PlayerSingleton.stage == 2:
+			get_tree().change_scene_to_file("res://Stage03.tscn")
+			PlayerSingleton.stage += 1
+			
+		elif PlayerSingleton.stage == 3:
+			get_tree().change_scene_to_file("res://Stage04.tscn")
+			PlayerSingleton.stage += 1
+			
+		elif PlayerSingleton.stage == 4:
+			get_tree().change_scene_to_file("res://Stage02Again.tscn")
+			PlayerSingleton.stage += 1
+			
+		elif PlayerSingleton.stage == 5:
+			get_tree().change_scene_to_file("res://Escape.tscn")
+			PlayerSingleton.stage += 1
 		

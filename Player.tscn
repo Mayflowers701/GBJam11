@@ -1,14 +1,14 @@
 [gd_scene load_steps=25 format=3 uid="uid://42grynypajcv"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_xtmtc"]
-[ext_resource type="Texture2D" path="res://cosmoEyes.png" id="2_eo6or"]
+[ext_resource type="Texture2D" uid="uid://cfm738er74xeo" path="res://cosmoEyes.png" id="2_eo6or"]
 [ext_resource type="Script" path="res://GameCamera.gd" id="3_ouqkk"]
-[ext_resource type="Texture2D" path="res://Cosmo.png" id="3_tytb5"]
+[ext_resource type="Texture2D" uid="uid://co27irhuk65x2" path="res://Cosmo.png" id="3_tytb5"]
 [ext_resource type="Script" path="res://DynamicLight.gd" id="4_jombq"]
 [ext_resource type="Texture2D" uid="uid://57rao52pmhbc" path="res://ShadowMap.png" id="4_ytouy"]
 [ext_resource type="Script" path="res://DynamicLightZ.gd" id="6_2gnub"]
 [ext_resource type="Script" path="res://ShadowOverlay.gd" id="6_t8d8d"]
-[ext_resource type="FontFile" path="res://Pixolletta8px.ttf" id="8_k8ceo"]
+[ext_resource type="FontFile" uid="uid://cose7w0j0swd8" path="res://Pixolletta8px.ttf" id="8_k8ceo"]
 [ext_resource type="Script" path="res://LabelTest.gd" id="8_whit7"]
 [ext_resource type="Script" path="res://Footsteps.gd" id="11_rumjr"]
 

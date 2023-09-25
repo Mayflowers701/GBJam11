@@ -427,6 +427,7 @@ position = Vector2(460, 124)
 
 [node name="Item" parent="." instance=ExtResource("8_y5k77")]
 position = Vector2(180, 120)
+value = "B"
 
 [node name="ZShadows" type="Polygon2D" parent="."]
 script = ExtResource("7_6jpiw")

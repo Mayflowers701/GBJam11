@@ -8,7 +8,7 @@ var rectWTime = 0
 var rectH = 0
 var rectW = 0
 
-
+@export var ending = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -54,7 +54,8 @@ func _process(delta):
 
 
 	if rectWTime >= 120:
-		get_tree().change_scene_to_file("res://Stage01.tscn")
+		if !ending:
+			get_tree().change_scene_to_file("res://Stage01.tscn")
 	rad = pow(time, (1/2.0))
 		
 	pass

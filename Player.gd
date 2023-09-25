@@ -263,6 +263,6 @@ func _on_stage_exit__botany_body_entered(body):
 			PlayerSingleton.stage += 1
 			
 		elif PlayerSingleton.stage == 5:
-			get_tree().change_scene_to_file("res://Escape.tscn")
+			get_tree().change_scene_to_file("res://Escaped.tscn")
 			PlayerSingleton.stage += 1
 		

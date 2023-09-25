@@ -7,6 +7,7 @@ var mus_eerie = load("res://Music/Eerie.mp3")
 
 func play_music():
 	
+	$MusicPlayerAlt.stop()
 	$MusicPlayer.stream = mus_intro
 	$MusicPlayer.play()
 	

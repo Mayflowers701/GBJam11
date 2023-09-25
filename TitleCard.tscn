@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://k3bb8hb4ce7j"]
+[gd_scene load_steps=4 format=3 uid="uid://c1lqypa2v3jcn"]
 
 [ext_resource type="Texture2D" uid="uid://ble6xdnh2bwjy" path="res://NegativeSpace.png" id="1_1m0h1"]
 [ext_resource type="Script" path="res://TitleCard.gd" id="1_kksk2"]

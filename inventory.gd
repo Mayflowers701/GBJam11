@@ -8,6 +8,9 @@ func _ready():
 	$C.frame = 2
 	$Jump.frame = 3
 	$Sprint.frame = 4
+	
+	$Label.hide()
+	
 	pass # Replace with function body.
 
 

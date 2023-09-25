@@ -1,6 +1,7 @@
 extends Node2D
 
 var timer = 180
+@export var ending = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,6 +18,7 @@ func _process(delta):
 	timer -= 1
 		
 	if Input.is_action_just_pressed("game_z"):
-		get_tree().change_scene_to_file("res://Stage01.tscn")
+		if !ending:
+			get_tree().change_scene_to_file("res://Stage01.tscn")
 	
 	pass

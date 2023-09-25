@@ -10,6 +10,9 @@ var init_y
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
+	$CanvasLayer/Label.hide()
+	
 	z_index = 2
 	init_y = position.y
 	
@@ -61,6 +64,14 @@ func _on_collect_area_body_entered(body):
 		$AudioStreamPlayer2D.stop()
 		$Keycards.hide()
 		$Powers.hide()
+		
+		if value != 'A' && value != 'B' && value != 'C':
+			$CanvasLayer/Label.z_index = 50
+			if value == "Jump":
+				$CanvasLayer/Label.text = "Double Jump"
+			elif value == "Sprint":
+				$CanvasLayer/Label.text = "Speed Booster"
+			$CanvasLayer/Label.show()
 		
 		await( $Jingle.finished )
 		queue_free()

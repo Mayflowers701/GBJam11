@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blxm3pimett58"
-path="res://.godot/imported/botany.png-096fcff6b5caf3c8724c0cce29edbb0a.ctex"
+uid="uid://d2il24g5lbd03"
+path="res://.godot/imported/Tube.png-f621aa0276c6a7ffd58c84959f085f89.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ColorPalettes/botany.png"
-dest_files=["res://.godot/imported/botany.png-096fcff6b5caf3c8724c0cce29edbb0a.ctex"]
+source_file="res://Tube.png"
+dest_files=["res://.godot/imported/Tube.png-f621aa0276c6a7ffd58c84959f085f89.ctex"]
 
 [params]
 

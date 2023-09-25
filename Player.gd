@@ -7,6 +7,14 @@ const SPEED = 60.0
 const JUMP_VELOCITY = -120.0
 const WALL_JUMP_VELOCITY = -100.0
 
+# inventory!
+var hasA = false
+var hasB = false
+var hasC = false
+
+var canSprint = false
+var jumpsInit = 1
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 400#ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -28,7 +36,7 @@ var wallJumping = false
 var wallJumpTimerInit = 7
 var wallJumpTimer = 0
 
-var jumpsInit = 2
+
 var jumps = jumpsInit
 
 var coyoteTimeInit = 10
@@ -38,7 +46,7 @@ var doubleTapInit = 15
 var doubleTap = 0
 
 var sprint = false
-var canSprint = true
+
 
 var climbSaveInit = 2
 var climbSave = climbSaveInit
@@ -52,6 +60,16 @@ func _ready():
 	pass
 
 func _physics_process(delta):
+	
+	if PlayerSingleton.hasDoubleJump:
+		jumpsInit = 2
+	else:
+		jumpsInit = 1
+		
+	if PlayerSingleton.hasSprint:
+		canSprint = true
+	else:
+		canSprint = false
 	
 	if isClimb:
 		isWalk = false
@@ -100,8 +118,10 @@ func _physics_process(delta):
 		
 	if sprint && canSprint:
 		velocity.x = direction * SPEED * 2
+		isSprint = true
 		$Trail.emitting = true
 	else:
+		isSprint = false
 		$Trail.emitting = false
 	
 	if doubleTap > 0:

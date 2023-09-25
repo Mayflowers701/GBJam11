@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blxm3pimett58"
-path="res://.godot/imported/botany.png-096fcff6b5caf3c8724c0cce29edbb0a.ctex"
+uid="uid://n70trlk330fv"
+path="res://.godot/imported/CIRCLE.png-540520de0b369537d9795a06a558b126.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ColorPalettes/botany.png"
-dest_files=["res://.godot/imported/botany.png-096fcff6b5caf3c8724c0cce29edbb0a.ctex"]
+source_file="res://CIRCLE.png"
+dest_files=["res://.godot/imported/CIRCLE.png-540520de0b369537d9795a06a558b126.ctex"]
 
 [params]
 

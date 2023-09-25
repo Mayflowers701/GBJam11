@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ba4menxcolbf3"]
+
+[ext_resource type="Script" path="res://AUTOLOAD/PlayerSingleton.gd" id="1_w3emu"]
+
+[node name="PlayerSingleton" type="Node"]
+script = ExtResource("1_w3emu")

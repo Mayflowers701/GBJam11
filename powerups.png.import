@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blxm3pimett58"
-path="res://.godot/imported/botany.png-096fcff6b5caf3c8724c0cce29edbb0a.ctex"
+uid="uid://uf620ih6muww"
+path="res://.godot/imported/powerups.png-e7f9d5ceb116e1a22d933a9f846a0237.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ColorPalettes/botany.png"
-dest_files=["res://.godot/imported/botany.png-096fcff6b5caf3c8724c0cce29edbb0a.ctex"]
+source_file="res://powerups.png"
+dest_files=["res://.godot/imported/powerups.png-e7f9d5ceb116e1a22d933a9f846a0237.ctex"]
 
 [params]
 

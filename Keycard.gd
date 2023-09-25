@@ -1,5 +1,9 @@
 extends Node2D
 
+
+@export var type = "card" # or power
+@export var value = "A" # B, C, Jump, Sprint
+
 var time = 0
 var init_y
 
@@ -8,6 +12,25 @@ var init_y
 func _ready():
 	z_index = 2
 	init_y = position.y
+	
+	if value == 'A':
+		$Keycards.frame = 0
+	if value == 'B':
+		$Keycards.frame = 1
+	if value == 'C':
+		$Keycards.frame = 2
+		
+	if value == "Jump":
+		$Keycards.hide()
+		$Powers.show()
+		$Powers.animation = "Starjump"
+		
+	if value == "Sprint":
+		$Keycards.hide()
+		$Powers.show()
+		$Powers.animation = "Shadowrun"
+	
+	
 	pass # Replace with function body.
 
 
@@ -19,3 +42,29 @@ func _process(delta):
 	
 	#if ($Area2D/CollisionShape2D.)
 	
+	
+
+
+func _on_collect_area_body_entered(body):
+	if body is Player:
+		if value == 'A':
+			PlayerSingleton.hasA = true
+		if value == 'B':
+			PlayerSingleton.hasB = true
+		if value == 'C':
+			PlayerSingleton.hasC = true
+		if value == 'Jump':
+			PlayerSingleton.hasDoubleJump = true
+		if value == "Sprint":
+			PlayerSingleton.hasSprint = true
+		$Jingle.play()
+		$AudioStreamPlayer2D.stop()
+		$Keycards.hide()
+		$Powers.hide()
+		
+		await( $Jingle.finished )
+		queue_free()
+		
+	
+	
+	pass # Replace with function body.

@@ -1,18 +1,19 @@
-[gd_scene load_steps=24 format=3 uid="uid://br5d80gogwvvs"]
+[gd_scene load_steps=25 format=3 uid="uid://bp4ucw7yig3of"]
 
 [ext_resource type="Script" path="res://ParallaxBackground.gd" id="1_kpjbc"]
 [ext_resource type="Script" path="res://NameTag.gd" id="1_mm3wg"]
 [ext_resource type="Shader" path="res://ScrollingStars.gdshader" id="2_kpppm"]
-[ext_resource type="Texture2D" uid="uid://pvar6036qp67" path="res://starfield.png" id="3_wifw6"]
+[ext_resource type="Texture2D" path="res://starfield.png" id="3_wifw6"]
 [ext_resource type="PackedScene" uid="uid://42grynypajcv" path="res://Player.tscn" id="4_72jkh"]
 [ext_resource type="Texture2D" uid="uid://bg6g5aptl3uyh" path="res://8PxTilePlaceholders.png" id="5_5c5k6"]
-[ext_resource type="TileSet" uid="uid://dv0poljnnlnl4" path="res://BotanyTiles.tres" id="6_mmpts"]
+[ext_resource type="TileSet" path="res://BotanyTiles.tres" id="6_mmpts"]
 [ext_resource type="Script" path="res://ZShadows.gd" id="7_6jpiw"]
-[ext_resource type="Texture2D" uid="uid://d2uhhh5u5ok3g" path="res://steel0.png" id="7_31wtq"]
-[ext_resource type="PackedScene" uid="uid://fakrb0gugsah" path="res://PursuerGroup.tscn" id="7_x1gui"]
+[ext_resource type="Texture2D" path="res://steel0.png" id="7_31wtq"]
+[ext_resource type="PackedScene" path="res://PursuerGroup.tscn" id="7_x1gui"]
 [ext_resource type="Script" path="res://CanvasLayer.gd" id="9_nqvac"]
 [ext_resource type="Texture2D" uid="uid://bdrt0r04nhgsu" path="res://ColorPalettes/RED_SHIFT.png" id="10_bb2la"]
 [ext_resource type="Shader" path="res://ColorPalWhite.gdshader" id="10_jko80"]
+[ext_resource type="PackedScene" uid="uid://bemb1agjxh5u3" path="res://speed_block.tscn" id="10_qd3bg"]
 [ext_resource type="Script" path="res://StageExit_Botany.gd" id="12_ciear"]
 [ext_resource type="Script" path="res://MusicTrigger.gd" id="14_w6iwv"]
 
@@ -342,6 +343,9 @@ color = Color(0.29, 0.29, 0.29, 1)
 
 [node name="CollisionMap" type="StaticBody2D" parent="."]
 
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionMap"]
+polygon = PackedVector2Array(0, 0, 24, 0, 24, -8, 0, -8)
+
 [node name="Player" parent="." instance=ExtResource("4_72jkh")]
 position = Vector2(12, 8)
 direction = 1
@@ -372,6 +376,18 @@ position = Vector2(-152, 0)
 polygon = PackedVector2Array(512, 204, 544, 204, 544, 244, 512, 244)
 
 [node name="PursuerGroup" parent="." instance=ExtResource("7_x1gui")]
+
+[node name="SpeedBlock" parent="." instance=ExtResource("10_qd3bg")]
+position = Vector2(196, 124)
+
+[node name="SpeedBlock2" parent="." instance=ExtResource("10_qd3bg")]
+position = Vector2(428, 124)
+
+[node name="SpeedBlock3" parent="." instance=ExtResource("10_qd3bg")]
+position = Vector2(444, 124)
+
+[node name="SpeedBlock4" parent="." instance=ExtResource("10_qd3bg")]
+position = Vector2(460, 124)
 
 [node name="ZShadows" type="Polygon2D" parent="."]
 script = ExtResource("7_6jpiw")

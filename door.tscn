@@ -1,0 +1,58 @@
+[gd_scene load_steps=10 format=3 uid="uid://copa1vtss17f"]
+
+[ext_resource type="Texture2D" uid="uid://c87it4lb70m6t" path="res://smallDoor.png" id="1_wpcji"]
+[ext_resource type="Script" path="res://Door.gd" id="2_8bain"]
+[ext_resource type="AudioStream" uid="uid://d1dtlhu6llvsb" path="res://Sounds/Door_Slide_1.mp3" id="3_d1sir"]
+[ext_resource type="Script" path="res://Open.gd" id="4_3uvpd"]
+[ext_resource type="AudioStream" uid="uid://cyxs1c2h3bhed" path="res://Sounds/Door_Slide_2.mp3" id="4_tychu"]
+[ext_resource type="Script" path="res://Close.gd" id="6_upst1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4g1k"]
+atlas = ExtResource("1_wpcji")
+region = Rect2(0, 0, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ek4t"]
+atlas = ExtResource("1_wpcji")
+region = Rect2(8, 0, 8, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jx7hp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4g1k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ek4t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="Door" type="Line2D"]
+position = Vector2(0, -8)
+points = PackedVector2Array(0, -8, 0, 8)
+width = 1.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jx7hp")
+autoplay = "default"
+script = ExtResource("2_8bain")
+
+[node name="MotionSensor" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MotionSensor"]
+polygon = PackedVector2Array(-12, -8, 12, -8, 12, 8, -12, 8)
+
+[node name="Open" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_d1sir")
+script = ExtResource("4_3uvpd")
+
+[node name="Close" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_tychu")
+script = ExtResource("6_upst1")
+
+[connection signal="body_entered" from="MotionSensor" to="AnimatedSprite2D" method="_on_motion_sensor_body_entered"]
+[connection signal="body_entered" from="MotionSensor" to="Open" method="_on_motion_sensor_body_entered"]
+[connection signal="body_exited" from="MotionSensor" to="AnimatedSprite2D" method="_on_motion_sensor_body_exited"]
+[connection signal="body_exited" from="MotionSensor" to="Close" method="_on_motion_sensor_body_exited"]

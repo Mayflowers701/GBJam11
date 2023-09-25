@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blxm3pimett58"
-path="res://.godot/imported/botany.png-096fcff6b5caf3c8724c0cce29edbb0a.ctex"
+uid="uid://daksgg5x4e775"
+path="res://.godot/imported/Speedblocks.png-81679922c6ca5076aa3b3cc789de62e0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ColorPalettes/botany.png"
-dest_files=["res://.godot/imported/botany.png-096fcff6b5caf3c8724c0cce29edbb0a.ctex"]
+source_file="res://Speedblocks.png"
+dest_files=["res://.godot/imported/Speedblocks.png-81679922c6ca5076aa3b3cc789de62e0.ctex"]
 
 [params]
 

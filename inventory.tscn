@@ -1,0 +1,78 @@
+[gd_scene load_steps=11 format=3 uid="uid://dyfjc1pna46do"]
+
+[ext_resource type="Script" path="res://inventory.gd" id="1_cbkl1"]
+[ext_resource type="Texture2D" uid="uid://dj013p21rc232" path="res://keycards.png" id="2_hnteu"]
+[ext_resource type="Texture2D" uid="uid://uf620ih6muww" path="res://powerups.png" id="3_epfoy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urnkb"]
+atlas = ExtResource("2_hnteu")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g8r1p"]
+atlas = ExtResource("2_hnteu")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1b4oa"]
+atlas = ExtResource("2_hnteu")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rg0y7"]
+atlas = ExtResource("3_epfoy")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kmq60"]
+atlas = ExtResource("3_epfoy")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hx6qc"]
+atlas = ExtResource("3_epfoy")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v6cv5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urnkb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g8r1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1b4oa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rg0y7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kmq60")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hx6qc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 0.0
+}]
+
+[node name="Inventory" type="CanvasLayer"]
+script = ExtResource("1_cbkl1")
+
+[node name="A" type="AnimatedSprite2D" parent="."]
+position = Vector2(152, 136)
+sprite_frames = SubResource("SpriteFrames_v6cv5")
+
+[node name="B" type="AnimatedSprite2D" parent="."]
+position = Vector2(140, 136)
+sprite_frames = SubResource("SpriteFrames_v6cv5")
+
+[node name="C" type="AnimatedSprite2D" parent="."]
+position = Vector2(128, 136)
+sprite_frames = SubResource("SpriteFrames_v6cv5")
+
+[node name="Jump" type="AnimatedSprite2D" parent="."]
+position = Vector2(8, 136)
+sprite_frames = SubResource("SpriteFrames_v6cv5")
+
+[node name="Sprint" type="AnimatedSprite2D" parent="."]
+position = Vector2(20, 136)
+sprite_frames = SubResource("SpriteFrames_v6cv5")

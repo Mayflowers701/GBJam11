@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blxm3pimett58"
-path="res://.godot/imported/botany.png-096fcff6b5caf3c8724c0cce29edbb0a.ctex"
+uid="uid://c87it4lb70m6t"
+path="res://.godot/imported/smallDoor.png-608a171fa1f7fc88c044bfb51545168b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ColorPalettes/botany.png"
-dest_files=["res://.godot/imported/botany.png-096fcff6b5caf3c8724c0cce29edbb0a.ctex"]
+source_file="res://smallDoor.png"
+dest_files=["res://.godot/imported/smallDoor.png-608a171fa1f7fc88c044bfb51545168b.ctex"]
 
 [params]
 

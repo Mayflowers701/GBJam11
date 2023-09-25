@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://bsr42qtq07veh"]
+
+[ext_resource type="Script" path="res://BigDoor.gd" id="1_l64lf"]
+[ext_resource type="Texture2D" uid="uid://0g5df5a1nmfm" path="res://BIGDoor.png" id="2_qicr1"]
+[ext_resource type="AudioStream" uid="uid://d1dtlhu6llvsb" path="res://Sounds/Door_Slide_1.mp3" id="3_gkj5a"]
+[ext_resource type="Texture2D" uid="uid://dj013p21rc232" path="res://keycards.png" id="4_lnouw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gurul"]
+atlas = ExtResource("4_lnouw")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ph4d"]
+atlas = ExtResource("4_lnouw")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bovco"]
+atlas = ExtResource("4_lnouw")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3aptl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gurul")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ph4d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bovco")
+}],
+"loop": true,
+"name": &"default",
+"speed": 0.0
+}]
+
+[node name="BigDoor" type="CharacterBody2D"]
+script = ExtResource("1_l64lf")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-541.6, -92.8)
+polygon = PackedVector2Array(538.6, 80.8, 544.6, 80.8, 544.6, 104.8, 538.6, 104.8)
+
+[node name="MotionDetector" type="Area2D" parent="."]
+
+[node name="M" type="CollisionPolygon2D" parent="MotionDetector"]
+position = Vector2(-541.6, -92.8)
+polygon = PackedVector2Array(521.6, 84.8, 565.6, 84.8, 565.6, 104.8, 521.6, 104.8)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture = ExtResource("2_qicr1")
+
+[node name="DoorSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_gkj5a")
+pitch_scale = 0.5
+
+[node name="CardSign" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3aptl")
+
+[connection signal="body_entered" from="MotionDetector" to="." method="_on_motion_detector_body_entered"]

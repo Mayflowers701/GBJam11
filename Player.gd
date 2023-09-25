@@ -231,6 +231,14 @@ func _physics_process(delta):
 	elif isWalk && !isFalling:
 		stepTimer = stepTimerInit
 		$Footsteps.play_sound()
+		
+	if Input.is_action_just_pressed("HAX"):
+		PlayerSingleton.hasA = true
+		PlayerSingleton.hasB = true
+		PlayerSingleton.hasC = true
+
+		PlayerSingleton.hasDoubleJump = true
+		PlayerSingleton.hasSprint = true
 	
 
 

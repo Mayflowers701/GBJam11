@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cc43i287254hn"]
+[gd_scene load_steps=22 format=3 uid="uid://cc43i287254hn"]
 
 [ext_resource type="Script" path="res://ParallaxBackground.gd" id="1_nris4"]
 [ext_resource type="Shader" path="res://ScrollingStars.gdshader" id="2_obwvl"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dyfjc1pna46do" path="res://inventory.tscn" id="11_plyuk"]
 [ext_resource type="Texture2D" uid="uid://blxm3pimett58" path="res://ColorPalettes/botany.png" id="11_wuvrw"]
 [ext_resource type="Script" path="res://StageExit_Botany.gd" id="12_hudkd"]
+[ext_resource type="Texture2D" uid="uid://pc53i7x7ucpc" path="res://TubeBig.png" id="16_lguxd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nfwdn"]
 shader = ExtResource("2_obwvl")
@@ -174,7 +175,7 @@ default_color = Color(0.15, 0.15, 0.15, 1)
 [node name="CollisionMap" type="StaticBody2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("4_drpds")]
-position = Vector2(644, 268)
+position = Vector2(624, 268)
 
 [node name="SpeedBlock" parent="." instance=ExtResource("5_mymkn")]
 position = Vector2(772, 204)
@@ -238,7 +239,7 @@ layer_0/tile_data = PackedInt32Array(2293835, 196609, 1, 2293836, 327681, 1, 229
 script = ExtResource("7_yqve0")
 
 [node name="Line2D" type="Line2D" parent="ZShadows"]
-points = PackedVector2Array(612, 244, 612, 244, 660, 244, 660, 260, 660, 260, 660, 276, 612, 276, 612, 276, 524, 276, 524, 276, 452, 276, 452, 268, 428, 268, 428, 276, 405.504, 276, 367.461, 276, 296.27, 276, 246.436, 276, 199.049, 276, 149.437, 276, 124, 276, 124, 252, 172.13, 252, 226.191, 252, 285.591, 252, 338.985, 252, 366.349, 252, 380, 252, 380, 172, 268, 172, 268, 108, 492, 108, 492, 148, 500, 148, 500, 100, 804, 100, 804, 52, 916, 52, 916, 220, 889.112, 220, 840.086, 220, 787.735, 220, 730.408, 220, 674.132, 220, 629.405, 220, 588, 220, 588, 196, 644, 196, 644, 172, 492, 172, 492, 244, 524, 244, 524, 244, 612, 244)
+points = PackedVector2Array(612, 244, 612, 244, 660, 244, 660, 260, 660, 260, 660, 276, 612, 276, 612, 276, 524, 276, 524, 276, 452, 276, 452, 268, 428, 268, 428, 276, 405.504, 276, 367.461, 276, 296.27, 276, 246.436, 276, 199.049, 276, 149.437, 276, 144, 276, 144, 252, 172.13, 252, 226.191, 252, 285.591, 252, 338.985, 252, 366.349, 252, 380, 252, 380, 172, 268, 172, 268, 108, 492, 108, 492, 148, 500, 148, 500, 100, 804, 100, 804, 52, 916, 52, 916, 220, 889.112, 220, 840.086, 220, 787.735, 220, 730.408, 220, 674.132, 220, 629.405, 220, 588, 220, 588, 196, 644, 196, 644, 172, 492, 172, 492, 244, 524, 244, 524, 244, 612, 244)
 width = 1.0
 
 [node name="Line2D2" type="Line2D" parent="ZShadows"]
@@ -342,5 +343,14 @@ target = "res://Stage03.tscn"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StageExit -> Underside"]
 position = Vector2(144, 264)
 shape = SubResource("RectangleShape2D_c82jw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(644, 260)
+texture = ExtResource("16_lguxd")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(156, 264)
+rotation = 3.14159
+texture = ExtResource("16_lguxd")
 
 [connection signal="body_entered" from="StageExit -> Underside" to="Player" method="_on_stage_exit__botany_body_entered"]
